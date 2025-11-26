@@ -1,0 +1,1045 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedEasy - Bridge the Gap in Medicine Supply Chain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        :root {
+            --background: hsl(210 40% 98%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(217.2 91.2% 59.8%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(160 84.1% 39.4%);
+            --secondary-foreground: hsl(210 40% 98%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(198.6 88.7% 48.4%);
+            --accent-foreground: hsl(210 40% 98%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(217.2 91.2% 59.8%);
+            --radius: 0.5rem;
+        }
+        
+        .font-sans { font-family: 'Inter', sans-serif; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="bg-card border-b border-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold text-primary">
+                        <i class="fas fa-pills mr-2"></i>MedEasy
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <button class="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium" onclick="showSection('home')">Home</button>
+                        <button class="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium" onclick="showSection('consumer')">Consumer</button>
+                        <button class="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium" onclick="showSection('retailer')">Retailer</button>
+                        <button class="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium" onclick="showSection('wholesaler')">Wholesaler</button>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-muted-foreground hover:text-foreground">
+                        <i class="fas fa-bell text-lg"></i>
+                    </button>
+                    <button class="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: HomePage -->
+    <div id="home-section" class="section">
+        <!-- Hero Section -->
+        <!-- Modern medicine pharmacy with digital displays and organized shelves -->
+        <div class="relative bg-gradient-to-r from-primary to-accent text-primary-foreground">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div style="background-image: url('https://pixabay.com/get/gfe72b7b0f3b94a010530b37e489c1a471a70942d7a4ec627c113392042ee9a5b672be628e0db95e45b13702b0b9b59a230092a817ec63d384c9ef762d8cc5684_1280.jpg'); background-size: cover; background-position: center;" class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                            Bridge the Gap in Medicine Supply Chain
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+                            Connecting consumers, retailers, and wholesalers for seamless medicine availability and distribution
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button class="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity">
+                                Find Medicine Near You
+                            </button>
+                            <button class="bg-card text-card-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-muted transition-colors">
+                                Join as Partner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Type Selection -->
+        <div class="py-16 bg-muted">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-foreground mb-4">Choose Your Role</h2>
+                    <p class="text-muted-foreground text-lg">Select the interface that matches your needs</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Consumer Card -->
+                    <div class="bg-card rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('consumer')">
+                        <div class="text-center">
+                            <div class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Consumer</h3>
+                            <p class="text-muted-foreground mb-6">Search and find medicines at nearby retailers with real-time availability</p>
+                            <ul class="text-sm text-muted-foreground space-y-2 mb-6">
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Search by medicine name</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Find nearest retailers</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Check real-time availability</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Compare prices</li>
+                            </ul>
+                            <button class="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:opacity-90">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Retailer Card -->
+                    <div class="bg-card rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('retailer')">
+                        <div class="text-center">
+                            <div class="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-store text-secondary text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Retailer</h3>
+                            <p class="text-muted-foreground mb-6">Manage your inventory and connect with wholesalers for restocking</p>
+                            <ul class="text-sm text-muted-foreground space-y-2 mb-6">
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Live inventory management</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Automatic restock alerts</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Wholesaler connections</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Sales analytics</li>
+                            </ul>
+                            <button class="bg-secondary text-secondary-foreground px-6 py-2 rounded-lg font-medium hover:opacity-90">
+                                Manage Store
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wholesaler Card -->
+                    <div class="bg-card rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('wholesaler')">
+                        <div class="text-center">
+                            <div class="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-warehouse text-accent text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Wholesaler</h3>
+                            <p class="text-muted-foreground mb-6">Supply medicines to retailers and manage bulk distribution</p>
+                            <ul class="text-sm text-muted-foreground space-y-2 mb-6">
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Retailer order management</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Bulk inventory tracking</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Distribution logistics</li>
+                                <li><i class="fas fa-check text-secondary mr-2"></i>Supply chain analytics</li>
+                            </ul>
+                            <button class="bg-accent text-accent-foreground px-6 py-2 rounded-lg font-medium hover:opacity-90">
+                                Supply Network
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-foreground mb-4">Why Choose MedEasy?</h2>
+                    <p class="text-muted-foreground text-lg">Revolutionizing medicine supply chain with technology</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clock text-primary"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Real-time Updates</h3>
+                        <p class="text-muted-foreground text-sm">Live inventory tracking across all partners</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-secondary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-map-marker-alt text-secondary"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Location-based</h3>
+                        <p class="text-muted-foreground text-sm">Find medicines at your nearest retailers</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-accent/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-accent"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Secure Platform</h3>
+                        <p class="text-muted-foreground text-sm">Trusted and verified medicine suppliers</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-network-wired text-primary"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Connected Network</h3>
+                        <p class="text-muted-foreground text-sm">Seamless communication across supply chain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: HomePage -->
+
+    <!-- @COMPONENT: ConsumerInterface -->
+    <div id="consumer-section" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Search Header -->
+            <div class="bg-card rounded-xl shadow-lg p-6 mb-8">
+                <h1 class="text-2xl font-bold mb-4">Find Medicine Near You</h1>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <input type="text" placeholder="Search medicine name..." class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent" data-mock="true">
+                    </div>
+                    <div class="md:w-64">
+                        <input type="text" placeholder="Enter your location..." class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent" data-mock="true" value="New York, NY">
+                    </div>
+                    <button class="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm">Paracetamol</span>
+                    <span class="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm">Ibuprofen</span>
+                    <span class="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm">Amoxicillin</span>
+                    <span class="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm">Aspirin</span>
+                </div>
+            </div>
+
+            <!-- Medicine Results -->
+            <div class="grid lg:grid-cols-4 gap-6">
+                <!-- Filters Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-card rounded-xl shadow-lg p-6 sticky top-24">
+                        <h3 class="font-semibold mb-4">Filters</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-medium mb-2 block">Category</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" data-mock="true">
+                                        <span class="text-sm">Pain Relief</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" data-mock="true">
+                                        <span class="text-sm">Antibiotics</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" data-mock="true">
+                                        <span class="text-sm">Vitamins</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-sm font-medium mb-2 block">Distance</label>
+                                <select class="w-full px-3 py-2 border border-border rounded-md text-sm" data-mock="true">
+                                    <option>Within 1 km</option>
+                                    <option>Within 5 km</option>
+                                    <option>Within 10 km</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-sm font-medium mb-2 block">Availability</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="availability" class="mr-2" data-mock="true">
+                                        <span class="text-sm">In Stock</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="availability" class="mr-2" data-mock="true">
+                                        <span class="text-sm">All</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results List -->
+                <div class="lg:col-span-3">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold">Search Results <span class="text-muted-foreground font-normal">(24 medicines found)</span></h2>
+                        <select class="px-3 py-2 border border-border rounded-md text-sm" data-mock="true">
+                            <option>Sort by Distance</option>
+                            <option>Sort by Price</option>
+                            <option>Sort by Availability</option>
+                        </select>
+                    </div>
+
+                    <!-- @MAP: searchResults.map(medicine => ( -->
+                    <div class="space-y-4">
+                        <!-- Medicine Card 1 -->
+                        <div class="bg-card rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-lg font-semibold" data-bind="medicine.name">Paracetamol 500mg</h3>
+                                        <span class="bg-secondary/10 text-secondary px-2 py-1 rounded-full text-xs font-medium">In Stock</span>
+                                    </div>
+                                    <p class="text-muted-foreground text-sm mb-3" data-bind="medicine.description">Pain relief and fever reducer tablets</p>
+                                    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                                        <span><i class="fas fa-store mr-1"></i><span data-bind="retailer.name">MediCare Pharmacy</span></span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i><span data-bind="retailer.distance">0.8 km away</span></span>
+                                        <span class="text-primary font-semibold" data-bind="medicine.price">$12.99</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold text-secondary mb-2">15 available</div>
+                                    <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                        Reserve
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medicine Card 2 -->
+                        <div class="bg-card rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-lg font-semibold">Ibuprofen 400mg</h3>
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Low Stock</span>
+                                    </div>
+                                    <p class="text-muted-foreground text-sm mb-3">Anti-inflammatory pain relief tablets</p>
+                                    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                                        <span><i class="fas fa-store mr-1"></i>HealthPlus Pharmacy</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>1.2 km away</span>
+                                        <span class="text-primary font-semibold">$8.49</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold text-yellow-600 mb-2">3 available</div>
+                                    <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                        Reserve
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medicine Card 3 -->
+                        <div class="bg-card rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-lg font-semibold">Amoxicillin 250mg</h3>
+                                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">Out of Stock</span>
+                                    </div>
+                                    <p class="text-muted-foreground text-sm mb-3">Antibiotic for bacterial infections</p>
+                                    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                                        <span><i class="fas fa-store mr-1"></i>WellCare Pharmacy</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>2.1 km away</span>
+                                        <span class="text-primary font-semibold">$24.99</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold text-red-600 mb-2">0 available</div>
+                                    <button class="bg-muted text-muted-foreground px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed" disabled>
+                                        Notify Me
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: ConsumerInterface -->
+
+    <!-- @COMPONENT: RetailerDashboard -->
+    <div id="retailer-section" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-2">Retailer Dashboard</h1>
+                <p class="text-muted-foreground">Welcome back, MediCare Pharmacy</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Total Medicines</p>
+                            <p class="text-2xl font-bold" data-bind="stats.totalMedicines">156</p>
+                        </div>
+                        <div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-pills text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Low Stock Items</p>
+                            <p class="text-2xl font-bold text-yellow-600" data-bind="stats.lowStock">8</p>
+                        </div>
+                        <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Out of Stock</p>
+                            <p class="text-2xl font-bold text-red-600" data-bind="stats.outOfStock">3</p>
+                        </div>
+                        <div class="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-times-circle text-red-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Pending Orders</p>
+                            <p class="text-2xl font-bold text-accent" data-bind="stats.pendingOrders">12</p>
+                        </div>
+                        <div class="bg-accent/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clock text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Inventory Management -->
+                <div class="lg:col-span-2">
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold">Inventory Management</h2>
+                            <div class="flex gap-2">
+                                <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                    <i class="fas fa-plus mr-2"></i>Add Medicine
+                                </button>
+                                <button class="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                    <i class="fas fa-download mr-2"></i>Export
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Search and Filter -->
+                        <div class="flex gap-4 mb-6">
+                            <input type="text" placeholder="Search medicines..." class="flex-1 px-4 py-2 border border-border rounded-lg" data-mock="true">
+                            <select class="px-4 py-2 border border-border rounded-lg" data-mock="true">
+                                <option>All Categories</option>
+                                <option>Pain Relief</option>
+                                <option>Antibiotics</option>
+                                <option>Vitamins</option>
+                            </select>
+                        </div>
+
+                        <!-- Inventory Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-border">
+                                        <th class="text-left py-3 font-medium">Medicine</th>
+                                        <th class="text-left py-3 font-medium">Category</th>
+                                        <th class="text-left py-3 font-medium">Stock</th>
+                                        <th class="text-left py-3 font-medium">Price</th>
+                                        <th class="text-left py-3 font-medium">Status</th>
+                                        <th class="text-left py-3 font-medium">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- @MAP: inventory.map(item => ( -->
+                                    <tr class="border-b border-border">
+                                        <td class="py-3" data-bind="item.name">Paracetamol 500mg</td>
+                                        <td class="py-3 text-muted-foreground" data-bind="item.category">Pain Relief</td>
+                                        <td class="py-3">
+                                            <span class="font-semibold" data-bind="item.stock">15</span>
+                                            <span class="text-muted-foreground text-sm"> units</span>
+                                        </td>
+                                        <td class="py-3 font-semibold" data-bind="item.price">$12.99</td>
+                                        <td class="py-3">
+                                            <span class="bg-secondary/10 text-secondary px-2 py-1 rounded-full text-xs font-medium" data-bind="item.status">In Stock</span>
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="flex gap-2">
+                                                <button class="text-primary hover:text-primary/80" data-event="click:editItem">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-accent hover:text-accent/80" data-event="click:restockItem">
+                                                    <i class="fas fa-plus-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-border">
+                                        <td class="py-3">Ibuprofen 400mg</td>
+                                        <td class="py-3 text-muted-foreground">Pain Relief</td>
+                                        <td class="py-3">
+                                            <span class="font-semibold">3</span>
+                                            <span class="text-muted-foreground text-sm"> units</span>
+                                        </td>
+                                        <td class="py-3 font-semibold">$8.49</td>
+                                        <td class="py-3">
+                                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Low Stock</span>
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="flex gap-2">
+                                                <button class="text-primary hover:text-primary/80">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-accent hover:text-accent/80">
+                                                    <i class="fas fa-plus-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-border">
+                                        <td class="py-3">Amoxicillin 250mg</td>
+                                        <td class="py-3 text-muted-foreground">Antibiotics</td>
+                                        <td class="py-3">
+                                            <span class="font-semibold">0</span>
+                                            <span class="text-muted-foreground text-sm"> units</span>
+                                        </td>
+                                        <td class="py-3 font-semibold">$24.99</td>
+                                        <td class="py-3">
+                                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">Out of Stock</span>
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="flex gap-2">
+                                                <button class="text-primary hover:text-primary/80">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- @END_MAP )) -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Sidebar -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Restock Alerts -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Restock Alerts</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                                <div>
+                                    <p class="font-medium text-sm">Ibuprofen 400mg</p>
+                                    <p class="text-xs text-muted-foreground">3 units left</p>
+                                </div>
+                                <button class="bg-accent text-accent-foreground px-3 py-1 rounded text-xs font-medium hover:opacity-90">
+                                    Order
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                                <div>
+                                    <p class="font-medium text-sm">Amoxicillin 250mg</p>
+                                    <p class="text-xs text-muted-foreground">Out of stock</p>
+                                </div>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded text-xs font-medium hover:opacity-90">
+                                    Urgent
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wholesaler Connections -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Wholesaler Network</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 p-3 border border-border rounded-lg">
+                                <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-warehouse text-primary text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-sm">MediSupply Co.</p>
+                                    <p class="text-xs text-muted-foreground">Response: 2 hours</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 border border-border rounded-lg">
+                                <div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-warehouse text-secondary text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-sm">PharmaWare Ltd.</p>
+                                    <p class="text-xs text-muted-foreground">Response: 4 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                            View All Partners
+                        </button>
+                    </div>
+
+                    <!-- Recent Orders -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Recent Orders</h3>
+                        <div class="space-y-3">
+                            <div class="border-l-4 border-secondary pl-3">
+                                <p class="font-medium text-sm">Order #1234</p>
+                                <p class="text-xs text-muted-foreground">Delivered - 2 hours ago</p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-3">
+                                <p class="font-medium text-sm">Order #1235</p>
+                                <p class="text-xs text-muted-foreground">In Transit - 6 hours ago</p>
+                            </div>
+                            <div class="border-l-4 border-yellow-500 pl-3">
+                                <p class="font-medium text-sm">Order #1236</p>
+                                <p class="text-xs text-muted-foreground">Processing - 1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: RetailerDashboard -->
+
+    <!-- @COMPONENT: WholesalerInterface -->
+    <div id="wholesaler-section" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-2">Wholesaler Dashboard</h1>
+                <p class="text-muted-foreground">Welcome back, MediSupply Co.</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Active Retailers</p>
+                            <p class="text-2xl font-bold" data-bind="stats.activeRetailers">24</p>
+                        </div>
+                        <div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-store text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Pending Orders</p>
+                            <p class="text-2xl font-bold text-accent" data-bind="stats.pendingOrders">18</p>
+                        </div>
+                        <div class="bg-accent/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Total Inventory</p>
+                            <p class="text-2xl font-bold text-secondary" data-bind="stats.totalInventory">2,456</p>
+                        </div>
+                        <div class="bg-secondary/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-boxes text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-muted-foreground text-sm">Monthly Revenue</p>
+                            <p class="text-2xl font-bold text-primary" data-bind="stats.monthlyRevenue">$45.2K</p>
+                        </div>
+                        <div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-chart-line text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Order Management -->
+                <div class="lg:col-span-2">
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold">Order Management</h2>
+                            <div class="flex gap-2">
+                                <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                    <i class="fas fa-plus mr-2"></i>New Order
+                                </button>
+                                <button class="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+                                    <i class="fas fa-filter mr-2"></i>Filter
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Order Tabs -->
+                        <div class="flex gap-4 mb-6 border-b border-border">
+                            <button class="pb-2 px-1 border-b-2 border-primary text-primary font-medium">Pending</button>
+                            <button class="pb-2 px-1 text-muted-foreground hover:text-foreground">Processing</button>
+                            <button class="pb-2 px-1 text-muted-foreground hover:text-foreground">Completed</button>
+                            <button class="pb-2 px-1 text-muted-foreground hover:text-foreground">All Orders</button>
+                        </div>
+
+                        <!-- Orders List -->
+                        <div class="space-y-4">
+                            <!-- @MAP: orders.map(order => ( -->
+                            <div class="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h3 class="font-semibold" data-bind="order.id">Order #WS-2024-001</h3>
+                                        <p class="text-muted-foreground text-sm" data-bind="retailer.name">MediCare Pharmacy</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium" data-bind="order.status">Urgent</span>
+                                        <p class="text-muted-foreground text-sm mt-1" data-bind="order.date">2 hours ago</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Items</p>
+                                        <p class="font-medium" data-bind="order.itemCount">5 medicines</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Total Value</p>
+                                        <p class="font-medium" data-bind="order.totalValue">$1,245.50</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Priority</p>
+                                        <p class="font-medium text-red-600">High</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button class="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:opacity-90" data-event="click:acceptOrder">
+                                        Accept Order
+                                    </button>
+                                    <button class="bg-muted text-muted-foreground px-3 py-1 rounded text-sm font-medium hover:bg-muted/80" data-event="click:viewDetails">
+                                        View Details
+                                    </button>
+                                    <button class="text-accent hover:text-accent/80 px-2" data-event="click:contactRetailer">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h3 class="font-semibold">Order #WS-2024-002</h3>
+                                        <p class="text-muted-foreground text-sm">HealthPlus Pharmacy</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">Normal</span>
+                                        <p class="text-muted-foreground text-sm mt-1">4 hours ago</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Items</p>
+                                        <p class="font-medium">12 medicines</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Total Value</p>
+                                        <p class="font-medium">$2,890.75</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-muted-foreground">Priority</p>
+                                        <p class="font-medium text-accent">Medium</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button class="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium hover:opacity-90">
+                                        Accept Order
+                                    </button>
+                                    <button class="bg-muted text-muted-foreground px-3 py-1 rounded text-sm font-medium hover:bg-muted/80">
+                                        View Details
+                                    </button>
+                                    <button class="text-accent hover:text-accent/80 px-2">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Inventory Alerts -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Inventory Alerts</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                                <div>
+                                    <p class="font-medium text-sm">Insulin Syringes</p>
+                                    <p class="text-xs text-muted-foreground">Low stock: 15 units</p>
+                                </div>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded text-xs font-medium hover:opacity-90">
+                                    Reorder
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                                <div>
+                                    <p class="font-medium text-sm">Paracetamol 500mg</p>
+                                    <p class="text-xs text-muted-foreground">Expires in 30 days</p>
+                                </div>
+                                <button class="bg-yellow-600 text-white px-3 py-1 rounded text-xs font-medium hover:opacity-90">
+                                    Alert
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Retailers -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Top Retailers</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-store text-primary text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-sm">MediCare Pharmacy</p>
+                                        <p class="text-xs text-muted-foreground">15 orders this month</p>
+                                    </div>
+                                </div>
+                                <span class="text-secondary font-semibold text-sm">$12.5K</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-store text-secondary text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-sm">HealthPlus Pharmacy</p>
+                                        <p class="text-xs text-muted-foreground">12 orders this month</p>
+                                    </div>
+                                </div>
+                                <span class="text-secondary font-semibold text-sm">$9.8K</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-store text-accent text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-sm">WellCare Pharmacy</p>
+                                        <p class="text-xs text-muted-foreground">8 orders this month</p>
+                                    </div>
+                                </div>
+                                <span class="text-secondary font-semibold text-sm">$6.2K</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-card rounded-xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">Quick Actions</h3>
+                        <div class="space-y-3">
+                            <button class="w-full bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:opacity-90 flex items-center justify-center gap-2">
+                                <i class="fas fa-plus"></i>
+                                Add New Medicine
+                            </button>
+                            <button class="w-full bg-secondary text-secondary-foreground py-2 rounded-lg text-sm font-medium hover:opacity-90 flex items-center justify-center gap-2">
+                                <i class="fas fa-chart-bar"></i>
+                                Generate Report
+                            </button>
+                            <button class="w-full bg-accent text-accent-foreground py-2 rounded-lg text-sm font-medium hover:opacity-90 flex items-center justify-center gap-2">
+                                <i class="fas fa-users"></i>
+                                Manage Retailers
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: WholesalerInterface -->
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-border mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-primary mb-4">
+                        <i class="fas fa-pills mr-2"></i>MedEasy
+                    </div>
+                    <p class="text-muted-foreground text-sm mb-4">
+                        Bridging the gap in medicine supply chain with real-time connectivity between consumers, retailers, and wholesalers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="text-muted-foreground hover:text-foreground">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="text-muted-foreground hover:text-foreground">
+                            <i class="fab fa-facebook"></i>
+                        </button>
+                        <button class="text-muted-foreground hover:text-foreground">
+                            <i class="fab fa-linkedin"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">For Consumers</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground">Find Medicines</a></li>
+                        <li><a href="#" class="hover:text-foreground">Locate Retailers</a></li>
+                        <li><a href="#" class="hover:text-foreground">Price Comparison</a></li>
+                        <li><a href="#" class="hover:text-foreground">Mobile App</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">For Partners</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground">Retailer Portal</a></li>
+                        <li><a href="#" class="hover:text-foreground">Wholesaler Dashboard</a></li>
+                        <li><a href="#" class="hover:text-foreground">API Integration</a></li>
+                        <li><a href="#" class="hover:text-foreground">Partner Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground">Help Center</a></li>
+                        <li><a href="#" class="hover:text-foreground">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-foreground">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-foreground">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+                <p>&copy; 2024 MedEasy. All rights reserved. Transforming healthcare supply chain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Section Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+            
+            // Update navigation active state
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('text-foreground', 'bg-primary/10');
+                btn.classList.add('text-muted-foreground');
+            });
+            
+            // Find and highlight active nav button
+            const activeBtn = document.querySelector(`nav button[onclick="showSection('${sectionName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-muted-foreground');
+                activeBtn.classList.add('text-foreground', 'bg-primary/10');
+            }
+        }
+
+        // Initialize with home section
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+
+        // Mobile menu toggle (if needed)
+        function toggleMobileMenu() {
+            // TODO: Implement mobile menu toggle functionality
+        }
+
+        // Search functionality placeholder
+        function searchMedicines() {
+            // TODO: Implement medicine search functionality
+        }
+
+        // Inventory management functions
+        function editItem(itemId) {
+            // TODO: Implement edit item functionality
+        }
+
+        function restockItem(itemId) {
+            // TODO: Implement restock functionality
+        }
+
+        // Order management functions
+        function acceptOrder(orderId) {
+            // TODO: Implement order acceptance functionality
+        }
+
+        function viewDetails(orderId) {
+            // TODO: Implement order details view
+        }
+
+        function contactRetailer(retailerId) {
+            // TODO: Implement retailer contact functionality
+        }
+    </script>
+</body>
+</html>

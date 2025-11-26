@@ -1,0 +1,1019 @@
+[
+  {
+    "Medicine name": "Zerodol",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Zerodol",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Apollo Pharmacy (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Ranitidine",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "NetMeds (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://www.netmeds.com/product/rantac-od-300mg-tablet-10s-lui2rw-8248811"
+  },
+  {
+    "Medicine name": "Vitamin D3",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "1mg Retail (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/product/vitanova-d3-800-iu-drops-15ml-lui1v1-8232350"
+  },
+  {
+    "Medicine name": "Pantocid",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Sharma Medical Store (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100328/pantocid_40mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Amlodipine",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Wellness Forever (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/product/amlip-5mg-tablet-10s-lui4h0-8285430"
+  },
+  {
+    "Medicine name": "Amoxicillin",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Sharma Medical Store (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/product/mox-500mg-capsule-15s-lui61w-8316711"
+  },
+  {
+    "Medicine name": "Crocin Advance",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "MedPlus (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/827436/crocin_advance_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Pantocid",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Sharma Medical Store (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100328/pantocid_40mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Loperamide",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "NetMeds (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/3xcpnSIm18-lopamide_2mg_tablet_10s_47197_0_1.jpg?dpr=1"
+  },
+  {
+    "Medicine name": "Prednisolone",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Apollo Pharmacy (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/d5gDEpJpWL-omnacortil_5mg_tablet_10s_41809_0_1.jpg?dpr=1"
+  },
+  {
+    "Medicine name": "Vitamin C",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "MedPlus (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/product/ldd-bioscience-vitamin-c-tablet-30s-lui5gr-8305404"
+  },
+  {
+    "Medicine name": "Fluconazole",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Sharma Medical Store (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://www.netmeds.com/product/fluka-150mg-tablet-1s-lui493-8280556"
+  },
+  {
+    "Medicine name": "Rantac",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Sharma Medical Store (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
+  },
+  {
+    "Medicine name": "Digene",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "MedPlus (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
+  },
+  {
+    "Medicine name": "Digene",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Wellness Forever (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
+  },
+  {
+    "Medicine name": "Digene",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Apollo Pharmacy (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
+  },
+  {
+    "Medicine name": "Rantac",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Wellness Forever (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
+  },
+  {
+    "Medicine name": "Simvastatin",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "MedPlus (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/product/simvotin-10mg-tablet-10s-lui60k-8315413"
+  },
+  {
+    "Medicine name": "Calcium Carbonate",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "1mg Retail (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/product/coral-calcium-tablet-15s-lui25j-8236705"
+  },
+  {
+    "Medicine name": "Atenolol",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Wellness Forever (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/product/aten-25mg-tablet-14s-lufutz-7523879"
+  },
+  {
+    "Medicine name": "Pantoprazole",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "NetMeds (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/product/pantakind-tablet-15s-luhb0n-7995651"
+  },
+  {
+    "Medicine name": "Warfarin",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/product/warf-1mg-tablet-30s-lui6hi-8325419"
+  },
+  {
+    "Medicine name": "Meftal Spass",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://www.netmeds.com/product/meftal-spas-tablet-10s-lui57u-8299370"
+  },
+  {
+    "Medicine name": "Amoxicillin",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Sharma Medical Store (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/product/augmentin-625-duo-tablet-10s-lui7t5-8350103"
+  },
+  {
+    "Medicine name": "Digene",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Sharma Medical Store (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://www.netmeds.com/product/digene-acidity-gas-relief-tablets-orange-flavour-15s-luhasn-7992092"
+  },
+  {
+    "Medicine name": "Loratadine",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "NetMeds (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://www.netmeds.com/product/alastin-10mg-tablet-10s-lufu64-7506624"
+  },
+  {
+    "Medicine name": "Allegra",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Sharma Medical Store (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "azee-500",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/product/azee-500mg-tablet-5s-lui6ho-8325245"
+  },
+  {
+    "Medicine name": "Levocetirizine",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Wellness Forever (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/product/levosiz-10mg-tablet-15s-lui7sf-8349790"
+  },
+  {
+    "Medicine name": "NAMCOLD",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "MedPlus (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://www.netmeds.com/product/nam-cold-dx-syrup-100ml-luhb21-7996341"
+  },
+  {
+    "Medicine name": "Zinc Sulfate",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "Gupta Medicos (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/product/zanash-sugar-free-delicious-mango-flavor-suspension-200ml-lzwn91-8499623"
+  },
+  {
+    "Medicine name": "Volini",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Apollo Pharmacy (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/product/volini-gel-75gm-lui28c-8238531"
+  },
+  {
+    "Medicine name": "Paracetamol",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "NetMeds (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/product/dolo-500mg-tablet-15s-lui7mb-8346671"
+  },
+  {
+    "Medicine name": "Vomikind",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "MedPlus (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/product/vomikind-md-4mg-tablet-10s-lui3q1-8270470"
+  },
+  {
+    "Medicine name": "Co-trimoxazole",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "Sharma Medical Store (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/product/co-trimoxazole-ds-tablet-10s-lui49p-8292266"
+  },
+  {
+    "Medicine name": "Moxifloxacin Eye Drops",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "NetMeds (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://www.netmeds.com/product/milflox-eye-drops-5ml-lui6ia-8325600"
+  },
+  {
+    "Medicine name": "Neproxyn",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "Wellness Forever (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/product/napra-d-500mg-tablet-10s-lui1zd-8232595"
+  },
+  {
+    "Medicine name": "Ciprofloxacin",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Sharma Medical Store (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/product/ciplox-d-eyeear-drops-10ml-lui3hv-8264786"
+  },
+  {
+    "Medicine name": "Zandu Balm",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Apollo Pharmacy (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://www.netmeds.com/product/zandu-balm-ultra-power-8-ml-lui5vc-8313400"
+  },
+  {
+    "Medicine name": "Deriva Cms Gel 15gm",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "1mg Retail (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://www.netmeds.com/product/deriva-cms-gel-15gm-lui53s-8298502"
+  },
+  {
+    "Medicine name": "Tretiva 20mg Capsule",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "MedPlus (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://www.netmeds.com/product/tretiva-20mg-capsule-10s-lui20b-8233182"
+  },
+  {
+    "Medicine name": "Renolog tablet",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Gupta Medicos (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/product/renolog-tablet-10s-lui2ad-8239209"
+  },
+  {
+    "Medicine name": "Metformin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/product/maxformin-750mg-tablet-15s-lui29u-8239186"
+  },
+  {
+    "Medicine name": "Lord's Gastrolin Plus Tablet 25 gm",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Gupta Medicos (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/product/lords-gastrolin-plus-tablet-25-gm-lui6ts-8331795"
+  },
+  {
+    "Medicine name": "Metronidazole",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Apollo Pharmacy (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Loperamide",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "NetMeds (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Ibuprofen",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "1mg Retail (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Budesonide",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "1mg Retail (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Paracetamol",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "NetMeds (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Atorvastatin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Wellness Forever (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Ondansetron",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "MedPlus (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Co-trimoxazole",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Sharma Medical Store (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Fluconazole",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "MedPlus (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Clindamycin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Apollo Pharmacy (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Vitamin D3",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Budesonide",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Sharma Medical Store (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Loperamide",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Wellness Forever (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Calpol",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "1mg Retail (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/407469/calpol_500mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Metformin",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Diclofenac",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Wellness Forever (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Clopidogrel",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "1mg Retail (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Dolo-650",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Sharma Medical Store (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/858330/dolo_650mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Digoxin",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Insulin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Cefixime",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "NetMeds (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Digene",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Apollo Pharmacy (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
+  },
+  {
+    "Medicine name": "Calcium Carbonate",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "NetMeds (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Calpol",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Apollo Pharmacy (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/407469/calpol_500mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Salbutamol",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "Wellness Forever (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Allegra",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Sharma Medical Store (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Loratadine",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "1mg Retail (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Diclofenac",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "NetMeds (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Ciprofloxacin",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Apollo Pharmacy (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Multivitamins",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Wellness Forever (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Prednisolone",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "Gupta Medicos (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Metformin",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "Wellness Forever (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Levocetirizine",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "MedPlus (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Augmentin",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Wellness Forever (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/828750/augmentin_625_duo_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Metformin",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Wellness Forever (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Metoclopramide",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Gupta Medicos (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Crocin Advance",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/827436/crocin_advance_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Prednisolone",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Simvastatin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "NetMeds (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Levothyroxine",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "1mg Retail (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Atorvastatin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "NetMeds (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Diclofenac",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "MedPlus (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Budesonide",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Gupta Medicos (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Pantocid",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Sharma Medical Store (Kolkata)",
+    "Latitude": 22.5726,
+    "Longitude": 88.3639,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100328/pantocid_40mg_tablet_15s_0.jpg"
+  },
+  {
+    "Medicine name": "Omeprazole",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "MedPlus (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Metformin",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "MedPlus (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Zerodol",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Apollo Pharmacy (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Vitamin D3",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Sharma Medical Store (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Digoxin",
+    "Source/Brand": "Antimalarial",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "1mg Retail (Hyderabad)",
+    "Latitude": 17.385,
+    "Longitude": 78.4867,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Clindamycin",
+    "Source/Brand": "Analgesics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "NetMeds (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Zinc Sulfate",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "1mg Retail (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Calcium Carbonate",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "MedPlus (Pune)",
+    "Latitude": 18.5204,
+    "Longitude": 73.8567,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Metoclopramide",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Torrent Pharma",
+    "Retailer": "Wellness Forever (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Salbutamol",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Gupta Medicos (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Calcium Carbonate",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "NetMeds (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Paracetamol",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Gupta Medicos (Bengaluru)",
+    "Latitude": 12.9716,
+    "Longitude": 77.5946,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Paracetamol",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Sun Pharma Distributors",
+    "Retailer": "MedPlus (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Rantac",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Sharma Medical Store (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
+  },
+  {
+    "Medicine name": "Cefuroxime",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Wellness Forever (Ahmedabad)",
+    "Latitude": 23.0225,
+    "Longitude": 72.5714,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Loperamide",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "Sharma Medical Store (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Losartan",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Wellness Forever (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Vitamin D3",
+    "Source/Brand": "Antibiotics",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "1mg Retail (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Vitamin D3",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "1mg Retail (Chennai)",
+    "Latitude": 13.0827,
+    "Longitude": 80.2707,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Paracetamol",
+    "Source/Brand": "Antiseptics",
+    "Supplier/Distributor": "Cipla Supply Chain",
+    "Retailer": "Apollo Pharmacy (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Diclofenac",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Apollo Distribution Hub",
+    "Retailer": "MedPlus (Delhi)",
+    "Latitude": 28.6139,
+    "Longitude": 77.209,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Allopurinol",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Zydus Lifesciences",
+    "Retailer": "MedPlus (Mumbai)",
+    "Latitude": 19.076,
+    "Longitude": 72.8777,
+    "Image": "https://via.placeholder.com/150"
+  },
+  {
+    "Medicine name": "Zerodol",
+    "Source/Brand": "Antipiretics",
+    "Supplier/Distributor": "Dr. Reddy's Distributors",
+    "Retailer": "Gupta Medicos (Lucknow)",
+    "Latitude": 26.8467,
+    "Longitude": 80.9462,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+  },
+  {
+    "Medicine name": "Allegra",
+    "Source/Brand": "Mood Stabilizers",
+    "Supplier/Distributor": "Lupin Pharma",
+    "Retailer": "Apollo Pharmacy (Jaipur)",
+    "Latitude": 26.9124,
+    "Longitude": 75.7873,
+    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+  }
+]
