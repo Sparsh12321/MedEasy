@@ -26,11 +26,11 @@ const WholerSalerData = data.map(item => ({
   Longitude: item["Longitude"]
 }));
 
-app.get("api/customerMedicines",async(req,res)=>{
+app.get("/api/customerMedicines",async(req,res)=>{
   const medicines=await RetailerModel.find().populate("Medicines.Medicine_name");
   return res.json(medicines);
 });
-app.get("api/wholeSalerMedicines",async(req,res)=>{
+app.get("/api/wholeSalerMedicines",async(req,res)=>{
   const medicines=await WholesalerModel.find().populate("Medicines.Medicine_name");
   return res.json(medicines);
 });

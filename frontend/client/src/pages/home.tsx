@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import type { MedicineWithInventory } from "@shared/schema";
+import CustomerMedicinesGrid from "@/components/ui/customer-grid";
 
 export default function Home() {
   const { data: medicines, isLoading } = useQuery<MedicineWithInventory[]>({
@@ -110,42 +111,20 @@ export default function Home() {
       
 
       {/* Featured Medicines */}
-      <section className="py-16 bg-muted/30" data-testid="featured-medicines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-4" data-testid="text-medicines-title">All Medicines</h2>
-              <p className="text-muted-foreground" data-testid="text-medicines-subtitle">Most ordered medicines by our customers</p>
-            </div>
-            <Link href="/search">
-              <Button variant="link" className="text-primary hover:underline font-semibold p-0" data-testid="button-view-all-medicines">
-                View All
-              </Button>
-            </Link>
-          </div>
-          
-          {isLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-testid="medicines-loading">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-xl shadow-sm animate-pulse overflow-hidden">
-                  <div className="w-full h-48 bg-gray-200"></div>
-                  <div className="p-6 space-y-4">
-                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                    <div className="h-6 bg-gray-200 rounded w-1/3"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-testid="medicines-grid">
-              {featuredMedicines.map((medicine) => (
-                <MedicineCard key={medicine.id} medicine={medicine} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+     <section className="py-16 bg-muted/30" data-testid="featured-medicines">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-between mb-12">
+      <div>
+        <h2 className="text-3xl font-bold mb-4">All Medicines</h2>
+        <p className="text-muted-foreground">
+          Most ordered medicines by our customers
+        </p>
+      </div>
+    </div>
+
+    <CustomerMedicinesGrid />
+  </div>
+</section>
 
       {/* Trust Badges */}
       <section className="py-16 bg-muted/30" data-testid="trust-section">
