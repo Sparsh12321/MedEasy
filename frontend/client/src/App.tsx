@@ -8,10 +8,12 @@ import Home from "@/pages/home";
 import Search from "@/pages/search";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
-import ConsumerDashboard from "./components/consumer-dashboard";
 import RetailerDashboard from "./components/retailer-dashboard";
 import WholesalerDashboard from "./components/wholesaler-dashboard";
 import Login from "./pages/login";
+import Signup from "./pages/signup";
+import PartnerLogin from "./pages/Partnerlogin";
+import { ProtectedRoute } from "./pages/ProtectedRoute";
 
 function App() {
   return (
@@ -20,13 +22,43 @@ function App() {
         <Toaster />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login/wholesaleretail" element={<PartnerLogin />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/consumer" element={<ConsumerDashboard />} />
-            <Route path="/retailer" element={<RetailerDashboard />} />
-            <Route path="/wholesaler" element={<WholesalerDashboard />} />
+
+            {/* PROTECTED ROUTES */}
+
+            {/* Customer Dashboard */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute allowed={["customer"]}>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Retailer Dashboard */}
+            <Route
+              path="/retailer"
+              element={
+                <ProtectedRoute allowed={["retailer"]}>
+                  <RetailerDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Wholesaler Dashboard */}
+            <Route
+              path="/wholesaler"
+              element={
+                <ProtectedRoute allowed={["wholesaler"]}>
+                  <WholesalerDashboard />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -4,6 +4,7 @@ import type React from "react";
 type RetailerEntry = {
   retailerName: string;
   quantity: number;
+  distanceKm?: number; // ⭐ NEW
 };
 
 export type AggregatedMedicine = {
@@ -20,9 +21,7 @@ type Props = {
 
 const MedicineCard: React.FC<Props> = ({ medicine }) => {
   return (
-    <div
-      className="border border-gray-200 rounded-lg p-3 shadow-sm"
-    >
+    <div className="border border-gray-200 rounded-lg p-3 shadow-sm">
       <img
         src={medicine.image}
         alt={medicine.medicineName}
@@ -36,13 +35,23 @@ const MedicineCard: React.FC<Props> = ({ medicine }) => {
       </p>
 
       <p className="mt-2 text-sm font-semibold">Available at:</p>
-      <ul className="text-sm max-h-24 overflow-y-auto pl-4">
-        {medicine.retailers.map((r) => (
-          <li key={r.retailerName}>
-            {r.retailerName} (Qty: {r.quantity})
-          </li>
-        ))}
-      </ul>
+      {medicine.retailers.length === 0 ? (
+        <p className="text-xs text-gray-500">
+          Not available in nearby stores within the selected radius.
+        </p>
+      ) : (
+        <ul className="text-sm max-h-24 overflow-y-auto pl-4">
+          {medicine.retailers.map((r) => (
+            <li key={r.retailerName}>
+              {r.retailerName} (Qty: {r.quantity}
+              {typeof r.distanceKm === "number"
+                ? ` • ~${r.distanceKm.toFixed(1)} km`
+                : ""}
+              )
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

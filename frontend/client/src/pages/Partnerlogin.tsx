@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Mail, Lock, Stethoscope } from "lucide-react";
+import { Store, Building2, Mail, Lock, Stethoscope } from "lucide-react";
 
-export default function Login() {
+type PartnerRole = "retailer" | "wholesaler";
+
+export default function PartnerLogin() {
+  const [role, setRole] = useState<PartnerRole>("retailer");
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
@@ -24,22 +27,26 @@ export default function Login() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:3000/login", {
+      const res = await fetch("http://localhost:3000/partner-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, role }),
       });
 
       const data = await res.json();
 
-      if (res.ok) {
+    if (res.ok) {
   setIsError(false);
   setMessage("Login successful! Redirecting...");
 
   localStorage.setItem("userId", data.userId);
-  localStorage.setItem("role", data.role); // should be "customer"
+  localStorage.setItem("role", data.role); // "retailer" | "wholesaler"
 
-  navigate("/dashboard");   // ✅ consumer = main Dashboard
+  if (data.role === "retailer") {
+    navigate("/retailer");
+  } else if (data.role === "wholesaler") {
+    navigate("/wholesaler");
+  }
 }
 
  else {
@@ -55,81 +62,105 @@ export default function Login() {
     }
   };
 
+  const RoleIcon = role === "retailer" ? Store : Building2;
+  const roleTitle = role === "retailer" ? "Retailer" : "Wholesaler";
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Top site header like dashboard */}
-     
+      
+
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-5xl w-full grid md:grid-cols-2 gap-8 items-center">
-          {/* Left side: marketing / info panel */}
+          {/* LEFT INFO SECTION */}
           <div className="hidden md:block">
             <div className="mb-4 inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
               <Stethoscope className="w-4 h-4 mr-2" />
-              MedEasy • Smart Medicine Management
+              MedEasy • Partner Access
             </div>
+
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-              Welcome back to <span className="text-primary">MedEasy</span>
+              Login as a <span className="text-primary">Retailer</span> or{" "}
+              <span className="text-primary">Wholesaler</span>
             </h1>
+
             <p className="text-muted-foreground mb-6">
-              Login to manage your medicines, track orders, and access your personalized dashboard
-              whether you&apos;re a consumer, retailer, or wholesaler.
+              Manage stock, fulfill orders, and respond to requests through a unified MedEasy partner dashboard.
             </p>
+
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start">
                 <span className="mt-1 mr-2 h-2 w-2 rounded-full bg-primary" />
-                Real-time access to medicine availability and nearby stores.
+                Real-time visibility into medicine demand and nearby consumers.
               </li>
               <li className="flex items-start">
                 <span className="mt-1 mr-2 h-2 w-2 rounded-full bg-primary" />
-                Manage your inventory, orders, and requests in one place.
+                Streamlined ordering between retailers and wholesalers.
               </li>
               <li className="flex items-start">
                 <span className="mt-1 mr-2 h-2 w-2 rounded-full bg-primary" />
-                Secure and fast login with a clean, intuitive interface.
+                Secure login and access tailored to your role.
               </li>
             </ul>
-             <div className="text-xs text-center text-muted-foreground mt-4">
-                Already a Retailer or Wholesaler?{" "}
-                <button
-                  type="button"
-                  className="text-primary underline"
-                  onClick={() => navigate("/login/wholesaleretail")}
-                >
-                  Login
-                </button>
-              </div>
           </div>
 
-          {/* Right side: Login Card styled like dashboard card */}
+          {/* RIGHT: PARTNER LOGIN CARD */}
           <Card className="shadow-lg overflow-hidden">
-            {/* Gradient header same vibe as dashboard .gradient-bg */}
+            {/* Gradient header like dashboard */}
             <div className="gradient-bg p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-2xl font-bold">
-                    Login to your account
+                    Partner Login
                   </CardTitle>
                   <CardDescription className="text-white/80 mt-1">
-                    Enter your credentials to access your dashboard
+                    Sign in as a {roleTitle.toLowerCase()} to access your tools
                   </CardDescription>
                 </div>
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <Stethoscope className="w-6 h-6" />
+                  <RoleIcon className="w-6 h-6" />
                 </div>
+              </div>
+
+              {/* Role toggle */}
+              <div className="mt-4 inline-flex bg-white/10 rounded-full p-1">
+                <button
+                  type="button"
+                  onClick={() => setRole("retailer")}
+                  className={`flex items-center px-4 py-1.5 text-xs font-medium rounded-full transition ${
+                    role === "retailer"
+                      ? "bg-white text-primary"
+                      : "text-white/80 hover:bg-white/10"
+                  }`}
+                >
+                  <Store className="w-4 h-4 mr-1.5" />
+                  Retailer
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setRole("wholesaler")}
+                  className={`flex items-center px-4 py-1.5 text-xs font-medium rounded-full transition ${
+                    role === "wholesaler"
+                      ? "bg-white text-primary"
+                      : "text-white/80 hover:bg-white/10"
+                  }`}
+                >
+                  <Building2 className="w-4 h-4 mr-1.5" />
+                  Wholesaler
+                </button>
               </div>
             </div>
 
             <CardContent className="p-6 space-y-4">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Business Email</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-2.5 w-4 h-4 text-muted-foreground" />
                     <Input
                       id="email"
                       type="email"
                       name="email"
-                      placeholder="you@example.com"
+                      placeholder="store@example.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -156,7 +187,7 @@ export default function Login() {
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Use your registered email and password.</span>
+                  <span>Use credentials provided during partner onboarding.</span>
                   <button
                     type="button"
                     className="underline hover:text-primary"
@@ -165,18 +196,16 @@ export default function Login() {
                   </button>
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Logging in..." : "Login"}
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting
+                    ? `Logging in as ${roleTitle}...`
+                    : `Login as ${roleTitle}`}
                 </Button>
               </form>
 
               {message && (
                 <p
-                  className={`text-sm text-center mt-2 ${
+                  className={`text-sm text-center ${
                     isError ? "text-red-500" : "text-green-600"
                   }`}
                 >
@@ -185,13 +214,13 @@ export default function Login() {
               )}
 
               <div className="text-xs text-center text-muted-foreground mt-4">
-                Don&apos;t have an account?{" "}
+                Not a partner yet?{" "}
                 <button
                   type="button"
                   className="text-primary underline"
                   onClick={() => navigate("/signup")}
                 >
-                  Sign up
+                  Request access
                 </button>
               </div>
             </CardContent>
