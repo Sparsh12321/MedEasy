@@ -13,13 +13,14 @@ export default function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "customer",
   });
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -39,7 +40,11 @@ export default function Signup() {
       const res = await fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          role: formData.role,
+        }),
       });
 
       const data = await res.json();
@@ -51,7 +56,14 @@ export default function Signup() {
   localStorage.setItem("userId", data.userId);
   localStorage.setItem("role", data.role); // "customer"
 
-  navigate("/dashboard");   // ✅ go to consumer dashboard
+  // redirect based on role
+  if (data.role === "retailer") {
+    navigate("/retailer");
+  } else if (data.role === "wholesaler") {
+    navigate("/wholesaler");
+  } else {
+    navigate("/dashboard");   // ✅ go to consumer dashboard
+  }
 }
 
  else {
@@ -195,6 +207,22 @@ export default function Signup() {
                       className="pl-9"
                     />
                   </div>
+                </div>
+
+                {/* Role */}
+                <div className="space-y-2">
+                  <Label htmlFor="role">Account Type</Label>
+                  <select
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    className="w-full border border-border rounded-md px-3 py-2 text-sm bg-background"
+                  >
+                    <option value="customer">Customer</option>
+                    <option value="retailer">Retailer</option>
+                    <option value="wholesaler">Wholesaler</option>
+                  </select>
                 </div>
 
                 {/* Submit */}

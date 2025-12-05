@@ -6,13 +6,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import Home from "@/pages/home";
 import Search from "@/pages/search";
-import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
+import Landing from "@/pages/landing";
 import RetailerDashboard from "./components/retailer-dashboard";
 import WholesalerDashboard from "./components/wholesaler-dashboard";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import PartnerLogin from "./pages/Partnerlogin";
+import CreateOrder from "./pages/create-order";
 import { ProtectedRoute } from "./pages/ProtectedRoute";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         <Toaster />
         <BrowserRouter>
           <Routes>
+            {/* Public landing page at root */}
+            <Route path="/" element={<Landing />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login/wholesaleretail" element={<PartnerLogin />} />
@@ -45,6 +49,16 @@ function App() {
               element={
                 <ProtectedRoute allowed={["retailer"]}>
                   <RetailerDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Create Order */}
+            <Route
+              path="/create-order"
+              element={
+                <ProtectedRoute allowed={["retailer"]}>
+                  <CreateOrder />
                 </ProtectedRoute>
               }
             />
