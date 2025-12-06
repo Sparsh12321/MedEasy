@@ -20,6 +20,11 @@ const OrderSchema = mongoose.Schema(
       ref: "user",
       required: true,
     },
+    wholesalerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Wholesaler",
+      required: true,
+    },
     items: [OrderItemSchema],
     status: {
       type: String,
@@ -36,4 +41,5 @@ const OrderSchema = mongoose.Schema(
 
 const OrderModel = mongoose.model("order", OrderSchema);
 module.exports = OrderModel;
+
 

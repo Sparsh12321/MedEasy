@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { X, Plus, ShoppingCart } from "lucide-react";
 
 interface Medicine {
@@ -13,6 +20,11 @@ interface Medicine {
   name: string;
   manufacturer: string;
   image?: string;
+}
+
+interface Wholesaler {
+  id: string;
+  name: string;
 }
 
 interface OrderItem {
@@ -57,9 +69,22 @@ export default function CreateOrder() {
     },
   });
 
+  // Fetch all wholesalers for dropdown
+  const { data: wholesalersData } = useQuery<Wholesaler[]>({
+    queryKey: ["wholesalers-list"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:3000/api/wholesalers/list");
+      if (!res.ok) {
+        throw new Error("Failed to fetch wholesalers");
+      }
+      return res.json();
+    },
+  });
+
   const [selectedItems, setSelectedItems] = useState<OrderItem[]>([]);
   const [selectedMedicineId, setSelectedMedicineId] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
+  const [selectedWholesalerId, setSelectedWholesalerId] = useState<string>("");
 
   const medicines = medicinesData || [];
 
@@ -113,6 +138,11 @@ export default function CreateOrder() {
       return;
     }
 
+    if (!selectedWholesalerId) {
+      window.alert("Please select a wholesaler for this order.");
+      return;
+    }
+
     if (!retailerUserId) {
       window.alert("Retailer user id not found. Please log in again.");
       return;
@@ -124,6 +154,7 @@ export default function CreateOrder() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           retailerUserId,
+          wholesalerId: selectedWholesalerId,
           items: selectedItems.map((item) => ({
             medicineId: item.medicineId,
             quantity: item.quantity,
@@ -176,6 +207,22 @@ export default function CreateOrder() {
                 <CardTitle>Add Medicines to Order</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Select Wholesaler</label>
+                  <Select value={selectedWholesalerId} onValueChange={setSelectedWholesalerId}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Choose a wholesaler..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {(wholesalersData || []).map((wholesaler) => (
+                        <SelectItem key={wholesaler.id} value={wholesaler.id}>
+                          {wholesaler.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Select Medicine</label>
                   <select

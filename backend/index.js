@@ -37,6 +37,20 @@ app.get("/api/wholeSalerMedicines",async(req,res)=>{
   return res.json(medicines);
 });
 
+// GET list of all wholesalers (for order creation)
+app.get("/api/wholesalers/list", async (req, res) => {
+  try {
+    const wholesalers = await WholesalerModel.find().select("_id Name");
+    return res.json(wholesalers.map(w => ({
+      id: w._id.toString(),
+      name: w.Name || "Unknown Wholesaler",
+    })));
+  } catch (err) {
+    console.error("Error fetching wholesalers:", err);
+    return res.status(500).json({ message: "Failed to fetch wholesalers" });
+  }
+});
+
 /*app.get("/medicines", async (req, res) => {
    try {
      await MedcineModel.insertMany(filteredData);
@@ -620,12 +634,14 @@ app.get("/dashboard/wholesaler/:id", async (req, res) => {
     const pendingOrders = await OrderModel.find({ status: "pending" })
       .sort({ createdAt: -1 })
       .populate("retailerUserId")
+      .populate("wholesalerId")
       .populate("items.medicineId");
 
     // Get all orders to calculate sequential numbers
     const allOrders = await OrderModel.find()
       .sort({ createdAt: 1 }) // Oldest first to assign sequential numbers
       .populate("retailerUserId")
+      .populate("wholesalerId")
       .populate("items.medicineId");
 
     // Create a map of order ID to sequential number
@@ -644,7 +660,7 @@ app.get("/dashboard/wholesaler/:id", async (req, res) => {
     const approvedOrdersThisMonth = await OrderModel.find({
       status: "approved",
       createdAt: { $gte: startOfMonth },
-    });
+    }).populate("wholesalerId");
 
     const monthlyRevenue = 
       approvedThisMonth.reduce((sum, r) => sum + (r.quantity || 0) * 100, 0) +
@@ -733,6 +749,8 @@ app.get("/dashboard/wholesaler/:id", async (req, res) => {
         requestNumber: orderNumberMap.get(order._id.toString()) || 0,
         retailerUserId: order.retailerUserId?._id?.toString() || order.retailerUserId?.toString(),
         retailerEmail: order.retailerUserId?.email || "Unknown",
+        wholesalerId: order.wholesalerId?._id?.toString() || order.wholesalerId?.toString(),
+        wholesalerName: order.wholesalerId?.Name || "Unknown",
         items: order.items.map((item) => ({
           medicineId: item.medicineId?._id?.toString() || item.medicineId?.toString(),
           medicineName: item.medicineId?.Medicine_name || "Unknown",
@@ -764,10 +782,10 @@ app.get("/dashboard/wholesaler/:id", async (req, res) => {
 // CREATE ORDER (Retailer) --------------------------------------------
 app.post("/orders", async (req, res) => {
   try {
-    const { retailerUserId, items } = req.body;
+    const { retailerUserId, wholesalerId, items } = req.body;
 
-    if (!retailerUserId || !items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ message: "retailerUserId and items array are required" });
+    if (!retailerUserId || !wholesalerId || !items || !Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ message: "retailerUserId, wholesalerId, and items array are required" });
     }
 
     // Validate items
@@ -785,10 +803,16 @@ app.post("/orders", async (req, res) => {
       ? new mongoose.Types.ObjectId(retailerUserId) 
       : retailerUserId;
 
-    console.log(`[Create Order] Creating order for retailerUserId: ${retailerUserId} (converted to: ${userIdObj})`);
+    // Ensure wholesalerId is stored as ObjectId
+    const wholesalerIdObj = mongoose.Types.ObjectId.isValid(wholesalerId) 
+      ? new mongoose.Types.ObjectId(wholesalerId) 
+      : wholesalerId;
+
+    console.log(`[Create Order] Creating order for retailerUserId: ${retailerUserId} (converted to: ${userIdObj}), wholesalerId: ${wholesalerId} (converted to: ${wholesalerIdObj})`);
 
     const order = await OrderModel.create({
       retailerUserId: userIdObj,
+      wholesalerId: wholesalerIdObj,
       items,
       totalAmount,
     });
