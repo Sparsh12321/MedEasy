@@ -47,7 +47,7 @@ const CustomerMedicinesGrid: React.FC = () => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/customerMedicines");
+        const res = await fetch("http://localhost:3000/retailers");
         const data: Retailer[] = await res.json();
 
         // 🔹 user location from localStorage
@@ -60,11 +60,14 @@ const CustomerMedicinesGrid: React.FC = () => {
         const map = new Map<string, AggregatedMedicine>();
 
         data.forEach((retailer) => {
+          if (!retailer.Medicines || retailer.Medicines.length === 0) {
+            return;
+          }
+          
           retailer.Medicines.forEach((med) => {
             const m = med.Medicine_name;
             // Skip if Medicine_name is null or doesn't have the required fields
             if (!m || !m.Medicine_name) {
-              console.warn("Skipping medicine with null Medicine_name:", med);
               return;
             }
 
@@ -124,7 +127,7 @@ const CustomerMedicinesGrid: React.FC = () => {
         let aggregated = Array.from(map.values());
 
         // Sort by distance if location is available (closest first)
-        if (latStr && lngStr) {
+        if (latStr && lngStr && aggregated.length > 0) {
           aggregated = aggregated.map(med => ({
             ...med,
             retailers: med.retailers.sort((a, b) => {

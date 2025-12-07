@@ -43,7 +43,7 @@ export default function CreateOrder() {
     queryKey: ["medicines-list"],
     queryFn: async () => {
       // Fetch from backend MongoDB
-      const res = await fetch("http://localhost:3000/api/customerMedicines");
+      const res = await fetch("http://localhost:3000/retailers");
       if (!res.ok) {
         throw new Error("Failed to fetch medicines");
       }
@@ -73,11 +73,16 @@ export default function CreateOrder() {
   const { data: wholesalersData } = useQuery<Wholesaler[]>({
     queryKey: ["wholesalers-list"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/api/wholesalers/list");
+      const res = await fetch("http://localhost:3000/wholesalers");
       if (!res.ok) {
         throw new Error("Failed to fetch wholesalers");
       }
-      return res.json();
+      const wholesalers = await res.json();
+      // Map to expected format: {id, name}
+      return wholesalers.map((w: any) => ({
+        id: w._id.toString(),
+        name: w.Name || "Unknown Wholesaler",
+      }));
     },
   });
 

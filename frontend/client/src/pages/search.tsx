@@ -44,7 +44,7 @@ export default function SearchPage() {
     const fetchMedicines = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:3000/api/customerMedicines");
+        const res = await fetch("http://localhost:3000/retailers");
         const data: Retailer[] = await res.json();
 
         const map = new Map<string, AggregatedMedicine>();

@@ -12,174 +12,157 @@ const OrderModel=require("./schemas/order");
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
-const filteredData = data.map(item => ({
-  Medicine_name: item["Medicine name"],
-  Brand: item["Source/Brand"],
-  Image: item["Image"]
-}));
-const RetailerData = data.map(item => ({
-  Name: item["Retailer"],
-  Latitude: item["Latitude"],
-  Longitude: item["Longitude"]
-}));
-const WholerSalerData = data.map(item => ({
-  Name: item["Supplier/Distributor"],
-  Latitude: item["Latitude"],
-  Longitude: item["Longitude"]
-}));
+// Extract unique medicines from data.json
+const medicineMap = new Map();
+data.forEach(item => {
+  const medName = item["Medicine name"];
+  if (!medicineMap.has(medName)) {
+    medicineMap.set(medName, {
+      Medicine_name: medName,
+      Brand: item["Source/Brand"],
+      Image: item["Image"]
+    });
+  }
+});
+const filteredData = Array.from(medicineMap.values());
 
-app.get("/api/customerMedicines",async(req,res)=>{
+// Extract unique retailers with their medicines and coordinates
+const retailerMap = new Map();
+data.forEach(item => {
+  const retailerName = item["Retailer"];
+  if (!retailerName) return; // Skip if no retailer name
+  
+  if (!retailerMap.has(retailerName)) {
+    retailerMap.set(retailerName, {
+      Name: retailerName,
+      Latitude: item["Latitude"] || null,
+      Longitude: item["Longitude"] || null,
+      medicines: new Set() // Track which medicines this retailer has
+    });
+  }
+  if (item["Medicine name"]) {
+    retailerMap.get(retailerName).medicines.add(item["Medicine name"]);
+  }
+});
+
+// Extract unique wholesalers with their medicines and coordinates
+const wholesalerMap = new Map();
+data.forEach(item => {
+  const wholesalerName = item["Supplier/Distributor"];
+  if (!wholesalerName) return; // Skip if no wholesaler name
+  
+  if (!wholesalerMap.has(wholesalerName)) {
+    wholesalerMap.set(wholesalerName, {
+      Name: wholesalerName,
+      Latitude: item["Latitude"] || null,
+      Longitude: item["Longitude"] || null,
+      medicines: new Set() // Track which medicines this wholesaler has
+    });
+  }
+  if (item["Medicine name"]) {
+    wholesalerMap.get(wholesalerName).medicines.add(item["Medicine name"]);
+  }
+});
+
+// GET medicines
+app.get("/medicines", async (req, res) => {
   try {
-    const medicines = await RetailerModel.find().populate("Medicines.Medicine_name");
-    
-    // Check if populate worked - if all Medicine_name are null, we need to fix the data
-    const hasValidData = medicines.some(retailer => 
-      retailer.Medicines && retailer.Medicines.some(med => med.Medicine_name)
-    );
-    
-    if (!hasValidData && medicines.length > 0) {
-      console.warn("⚠️ Populate returned null - Medicine_name references may be broken");
-      console.warn("💡 You may need to run the /populate endpoint to link medicines to retailers");
-    }
-    
+    const medicines = await MedcineModel.find();
     return res.json(medicines);
   } catch (err) {
-    console.error("Error fetching customer medicines:", err);
+    console.error("Error fetching medicines:", err);
     return res.status(500).json({ error: "Failed to fetch medicines" });
   }
 });
-app.get("/api/wholeSalerMedicines",async(req,res)=>{
-  const medicines=await WholesalerModel.find().populate("Medicines.Medicine_name");
-  return res.json(medicines);
-});
 
-// GET list of all wholesalers (for order creation)
-app.get("/api/wholesalers/list", async (req, res) => {
+// GET retailers
+app.get("/retailers", async (req, res) => {
   try {
-    const wholesalers = await WholesalerModel.find().select("_id Name");
-    return res.json(wholesalers.map(w => ({
-      id: w._id.toString(),
-      name: w.Name || "Unknown Wholesaler",
-    })));
+    const retailers = await RetailerModel.find().populate("Medicines.Medicine_name");
+    return res.json(retailers);
   } catch (err) {
-    console.error("Error fetching wholesalers:", err);
-    return res.status(500).json({ message: "Failed to fetch wholesalers" });
+    console.error("Error fetching retailers:", err);
+    return res.status(500).json({ error: "Failed to fetch retailers" });
   }
 });
 
-// Data seeding endpoints (uncomment to use)
-app.get("/api/seed/medicines", async (req, res) => {
-   try {
-     await MedcineModel.insertMany(filteredData);
-     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
-   } catch (err) {
-    console.error("❌ Error inserting:", err);
-     res.status(500).send("Error inserting data");
-   }
+// GET wholesalers
+app.get("/wholesalers", async (req, res) => {
+  try {
+    const wholesalers = await WholesalerModel.find().populate("Medicines.Medicine_name");
+    return res.json(wholesalers);
+  } catch (err) {
+    console.error("Error fetching wholesalers:", err);
+    return res.status(500).json({ error: "Failed to fetch wholesalers" });
+  }
 });
-app.get("/api/seed/retailers", async (req, res) => {
-   try {
-     await RetailerModel.insertMany(RetailerData);
-     res.send("✅ Retailers inserted successfully!");
-   } catch (err) {
-     console.error("❌ Error inserting:", err);
-     res.status(500).send("Error inserting data");
-   }
- });
- app.get("/api/seed/wholesalers", async (req, res) => {
-   try {
-     await WholesalerModel.insertMany(WholerSalerData);
-     res.send("✅ Wholesalers inserted successfully!");
-   } catch (err) {
-     console.error("❌ Error inserting:", err);
-     res.status(500).send("Error inserting data");
-   }
- });
 
- // Populate endpoint to link medicines to retailers/wholesalers
- app.get("/populate", async (req, res) => {
-   try {
-     // First, ensure all medicines from data.json are in the database
-     const existingMeds = await MedcineModel.find({});
-     const existingMedNames = new Set(existingMeds.map(m => m.Medicine_name));
-     
-     // Insert missing medicines
-     const medsToInsert = filteredData.filter(item => !existingMedNames.has(item.Medicine_name));
-     if (medsToInsert.length > 0) {
-       await MedcineModel.insertMany(medsToInsert);
-       console.log(`✅ Inserted ${medsToInsert.length} new medicines`);
-     }
-     
-     // Get all medicines
-     const allMeds = await MedcineModel.find({}, "_id Medicine_name");
-     const medMap = new Map(allMeds.map(m => [m.Medicine_name, m._id]));
-     
-     // For each retailer, create medicines array based on data.json
-     const retailers = await RetailerModel.find({});
-     let updatedCount = 0;
-     
-     for (const retailer of retailers) {
-       const retailerMedicines = [];
-       
-       // Find all medicines for this retailer from data.json
-       for (const item of data) {
-         if (item["Retailer"] === retailer.Name) {
-           const medName = item["Medicine name"];
-           const medId = medMap.get(medName);
-           if (medId) {
-             retailerMedicines.push({
-               Medicine_name: medId,
-               Quantity: 50 // Default quantity
-             });
-           }
-         }
-       }
-       
-       if (retailerMedicines.length > 0) {
-         retailer.Medicines = retailerMedicines;
-         await retailer.save();
-         updatedCount++;
-       }
-     }
-     
-     // Same for wholesalers
-     const wholesalers = await WholesalerModel.find({});
-     let wholeUpdatedCount = 0;
-     
-     for (const wholesaler of wholesalers) {
-       const wholesalerMedicines = [];
-       
-       for (const item of data) {
-         if (item["Supplier/Distributor"] === wholesaler.Name) {
-           const medName = item["Medicine name"];
-           const medId = medMap.get(medName);
-           if (medId) {
-             wholesalerMedicines.push({
-               Medicine_name: medId,
-               Quantity: 50
-             });
-           }
-         }
-       }
-       
-       if (wholesalerMedicines.length > 0) {
-         wholesaler.Medicines = wholesalerMedicines;
-         await wholesaler.save();
-         wholeUpdatedCount++;
-       }
-     }
-     
-     res.json({ 
-       success: true, 
-       retailersUpdated: updatedCount,
-       wholesalersUpdated: wholeUpdatedCount,
-       totalMedicines: allMeds.length
-     });
-   } catch (err) {
-     console.error("Populate error:", err);
-     res.status(500).json({ error: "Failed to populate", message: err.message });
-   }
- });
+// Populate endpoint - loads all data from data.json
+app.get("/populate", async (req, res) => {
+  try {
+    // Clear existing data (optional - comment out if you want to keep existing data)
+    await MedcineModel.deleteMany({});
+    await RetailerModel.deleteMany({});
+    await WholesalerModel.deleteMany({});
+
+    // Insert all unique medicines
+    const medicines = await MedcineModel.insertMany(filteredData);
+    console.log(`✅ Inserted ${medicines.length} medicines`);
+
+    // Create a map of medicine name to ObjectId for linking
+    const medicineIdMap = new Map();
+    medicines.forEach(med => {
+      medicineIdMap.set(med.Medicine_name, med._id);
+    });
+
+    // Prepare retailer data with linked medicines
+    const retailerDataArray = Array.from(retailerMap.values())
+      .filter(retailer => retailer.Latitude != null && retailer.Longitude != null) // Only include retailers with valid coordinates
+      .map(retailer => ({
+        Name: retailer.Name,
+        Latitude: retailer.Latitude,
+        Longitude: retailer.Longitude,
+        Medicines: Array.from(retailer.medicines).map(medName => ({
+          Medicine_name: medicineIdMap.get(medName),
+          Quantity: 50 // Default quantity
+        })).filter(m => m.Medicine_name) // Filter out any medicines not found
+      }))
+      .filter(retailer => retailer.Medicines.length > 0); // Only include retailers with at least one medicine
+
+    // Insert retailers
+    const retailers = await RetailerModel.insertMany(retailerDataArray);
+    console.log(`✅ Inserted ${retailers.length} retailers with coordinates`);
+
+    // Prepare wholesaler data with linked medicines
+    const wholesalerDataArray = Array.from(wholesalerMap.values())
+      .filter(wholesaler => wholesaler.Latitude != null && wholesaler.Longitude != null) // Only include wholesalers with valid coordinates
+      .map(wholesaler => ({
+        Name: wholesaler.Name,
+        Latitude: wholesaler.Latitude,
+        Longitude: wholesaler.Longitude,
+        Medicines: Array.from(wholesaler.medicines).map(medName => ({
+          Medicine_name: medicineIdMap.get(medName),
+          Quantity: 100 // Default quantity for wholesalers
+        })).filter(m => m.Medicine_name) // Filter out any medicines not found
+      }))
+      .filter(wholesaler => wholesaler.Medicines.length > 0); // Only include wholesalers with at least one medicine
+
+    // Insert wholesalers
+    const wholesalers = await WholesalerModel.insertMany(wholesalerDataArray);
+    console.log(`✅ Inserted ${wholesalers.length} wholesalers`);
+
+    res.json({ 
+      success: true, 
+      medicines: medicines.length,
+      retailers: retailers.length,
+      wholesalers: wholesalers.length,
+      message: "✅ Data populated successfully!"
+    });
+  } catch (err) {
+    console.error("Populate error:", err);
+    res.status(500).json({ error: "Failed to populate", message: err.message });
+  }
+});
 
 // CUSTOMER SIGNUP  -------------------------------------------------
 app.post("/signup", async (req, res) => {
