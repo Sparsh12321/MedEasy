@@ -104,7 +104,7 @@ export default function Home() {
                 </Link>
                 <Button
                   variant="outline"
-                  className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
+                  className="border-2 border-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
                   data-testid="button-find-store"
                   onClick={() => setMapOpen(true)}   // ⭐ open map from hero
                 >
