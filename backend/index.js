@@ -29,8 +29,24 @@ const WholerSalerData = data.map(item => ({
 }));
 
 app.get("/api/customerMedicines",async(req,res)=>{
-  const medicines=await RetailerModel.find().populate("Medicines.Medicine_name");
-  return res.json(medicines);
+  try {
+    const medicines = await RetailerModel.find().populate("Medicines.Medicine_name");
+    
+    // Check if populate worked - if all Medicine_name are null, we need to fix the data
+    const hasValidData = medicines.some(retailer => 
+      retailer.Medicines && retailer.Medicines.some(med => med.Medicine_name)
+    );
+    
+    if (!hasValidData && medicines.length > 0) {
+      console.warn("⚠️ Populate returned null - Medicine_name references may be broken");
+      console.warn("💡 You may need to run the /populate endpoint to link medicines to retailers");
+    }
+    
+    return res.json(medicines);
+  } catch (err) {
+    console.error("Error fetching customer medicines:", err);
+    return res.status(500).json({ error: "Failed to fetch medicines" });
+  }
 });
 app.get("/api/wholeSalerMedicines",async(req,res)=>{
   const medicines=await WholesalerModel.find().populate("Medicines.Medicine_name");
@@ -51,7 +67,8 @@ app.get("/api/wholesalers/list", async (req, res) => {
   }
 });
 
-/*app.get("/medicines", async (req, res) => {
+// Data seeding endpoints (uncomment to use)
+app.get("/api/seed/medicines", async (req, res) => {
    try {
      await MedcineModel.insertMany(filteredData);
      res.send("✅ Medicines inserted successfully (name, brand, image only)!");
@@ -60,32 +77,109 @@ app.get("/api/wholesalers/list", async (req, res) => {
      res.status(500).send("Error inserting data");
    }
 });
-app.get("/retailers", async (req, res) => {
+app.get("/api/seed/retailers", async (req, res) => {
    try {
      await RetailerModel.insertMany(RetailerData);
-     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
+     res.send("✅ Retailers inserted successfully!");
    } catch (err) {
      console.error("❌ Error inserting:", err);
      res.status(500).send("Error inserting data");
    }
  });
- app.get("/wholesalers", async (req, res) => {
+ app.get("/api/seed/wholesalers", async (req, res) => {
    try {
      await WholesalerModel.insertMany(WholerSalerData);
-     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
+     res.send("✅ Wholesalers inserted successfully!");
    } catch (err) {
      console.error("❌ Error inserting:", err);
      res.status(500).send("Error inserting data");
    }
  });
 
- app.get("/populate",async(req,res)=>{
-     const meds = await MedcineModel.find({}, "_id");
-     const formatted = meds.map(m => ({ Medicine_name: m._id, Quantity: 50 }));
-     const result = await RetailerModel.updateMany({}, { $set: { Medicines: formatted } });
-     const resss = await WholesalerModel.updateMany({}, { $set: { Medicines: formatted } });
-     res.json({ success: true, modifiedCount: result.modifiedCount });
- })*/
+ // Populate endpoint to link medicines to retailers/wholesalers
+ app.get("/populate", async (req, res) => {
+   try {
+     // First, ensure all medicines from data.json are in the database
+     const existingMeds = await MedcineModel.find({});
+     const existingMedNames = new Set(existingMeds.map(m => m.Medicine_name));
+     
+     // Insert missing medicines
+     const medsToInsert = filteredData.filter(item => !existingMedNames.has(item.Medicine_name));
+     if (medsToInsert.length > 0) {
+       await MedcineModel.insertMany(medsToInsert);
+       console.log(`✅ Inserted ${medsToInsert.length} new medicines`);
+     }
+     
+     // Get all medicines
+     const allMeds = await MedcineModel.find({}, "_id Medicine_name");
+     const medMap = new Map(allMeds.map(m => [m.Medicine_name, m._id]));
+     
+     // For each retailer, create medicines array based on data.json
+     const retailers = await RetailerModel.find({});
+     let updatedCount = 0;
+     
+     for (const retailer of retailers) {
+       const retailerMedicines = [];
+       
+       // Find all medicines for this retailer from data.json
+       for (const item of data) {
+         if (item["Retailer"] === retailer.Name) {
+           const medName = item["Medicine name"];
+           const medId = medMap.get(medName);
+           if (medId) {
+             retailerMedicines.push({
+               Medicine_name: medId,
+               Quantity: 50 // Default quantity
+             });
+           }
+         }
+       }
+       
+       if (retailerMedicines.length > 0) {
+         retailer.Medicines = retailerMedicines;
+         await retailer.save();
+         updatedCount++;
+       }
+     }
+     
+     // Same for wholesalers
+     const wholesalers = await WholesalerModel.find({});
+     let wholeUpdatedCount = 0;
+     
+     for (const wholesaler of wholesalers) {
+       const wholesalerMedicines = [];
+       
+       for (const item of data) {
+         if (item["Supplier/Distributor"] === wholesaler.Name) {
+           const medName = item["Medicine name"];
+           const medId = medMap.get(medName);
+           if (medId) {
+             wholesalerMedicines.push({
+               Medicine_name: medId,
+               Quantity: 50
+             });
+           }
+         }
+       }
+       
+       if (wholesalerMedicines.length > 0) {
+         wholesaler.Medicines = wholesalerMedicines;
+         await wholesaler.save();
+         wholeUpdatedCount++;
+       }
+     }
+     
+     res.json({ 
+       success: true, 
+       retailersUpdated: updatedCount,
+       wholesalersUpdated: wholeUpdatedCount,
+       totalMedicines: allMeds.length
+     });
+   } catch (err) {
+     console.error("Populate error:", err);
+     res.status(500).json({ error: "Failed to populate", message: err.message });
+   }
+ });
 
 // CUSTOMER SIGNUP  -------------------------------------------------
 app.post("/signup", async (req, res) => {

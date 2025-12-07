@@ -3,163 +3,109 @@
     "Medicine name": "Zerodol",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "NetMeds (Ahmedabad)",
-    "Latitude": 23.0225,
-    "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
-  },
-  {
-    "Medicine name": "Zerodol",
-    "Source/Brand": "Antibiotics",
-    "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "Apollo Pharmacy (Pune)",
-    "Latitude": 18.5204,
-    "Longitude": 73.8567,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+    "Retailer": "Doon Medicos (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/5_BfmS-c7_-zerodol_100mg_tablet_10s_43324_0_2.jpg"
   },
   {
     "Medicine name": "Ranitidine",
     "Source/Brand": "Antibiotics",
     "Supplier/Distributor": "Cipla Supply Chain",
-    "Retailer": "NetMeds (Bengaluru)",
-    "Latitude": 12.9716,
-    "Longitude": 77.5946,
-    "Image": "https://www.netmeds.com/product/rantac-od-300mg-tablet-10s-lui2rw-8248811"
+    "Retailer": "Dehradun Pharmacy",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/sGcLpf7vFb-rantac_150mg_tablet_30s_31413_0_1.jpg"
   },
   {
     "Medicine name": "Vitamin D3",
     "Source/Brand": "Analgesics",
     "Supplier/Distributor": "Torrent Pharma",
-    "Retailer": "1mg Retail (Ahmedabad)",
-    "Latitude": 23.0225,
-    "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/product/vitanova-d3-800-iu-drops-15ml-lui1v1-8232350"
+    "Retailer": "Rajpur Road Pharmacy (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/el6dLTQV6s-d_rise_60k_capsule_4s_36552_0_1.jpg"
   },
   {
     "Medicine name": "Pantocid",
     "Source/Brand": "Analgesics",
     "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "Sharma Medical Store (Ahmedabad)",
-    "Latitude": 23.0225,
-    "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100328/pantocid_40mg_tablet_15s_0.jpg"
+    "Retailer": "Doon Medicos (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/dKA1L63JvP-pantocid_40mg_tablet_15s_745888_0_1.jpg"
   },
   {
     "Medicine name": "Amlodipine",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Torrent Pharma",
-    "Retailer": "Wellness Forever (Lucknow)",
-    "Latitude": 26.8467,
-    "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/product/amlip-5mg-tablet-10s-lui4h0-8285430"
-  },
-  {
-    "Medicine name": "Amoxicillin",
-    "Source/Brand": "Analgesics",
-    "Supplier/Distributor": "Zydus Lifesciences",
-    "Retailer": "Sharma Medical Store (Jaipur)",
-    "Latitude": 26.9124,
-    "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/product/mox-500mg-capsule-15s-lui61w-8316711"
+    "Retailer": "Dehradun Pharmacy",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/No1xuCq8KT-amlopin_5mg_tablet_10s_35378_0_2.jpg"
   },
   {
     "Medicine name": "Crocin Advance",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Dr. Reddy's Distributors",
-    "Retailer": "MedPlus (Jaipur)",
-    "Latitude": 26.9124,
-    "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/827436/crocin_advance_tablet_15s_0.jpg"
+    "Retailer": "Rajpur Road Pharmacy (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/Ut6J1gPOIh-crocin_advance_tablet_20s_137469_0_1.jpg"
   },
   {
     "Medicine name": "Pantocid",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Cipla Supply Chain",
-    "Retailer": "Sharma Medical Store (Delhi)",
-    "Latitude": 28.6139,
-    "Longitude": 77.209,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100328/pantocid_40mg_tablet_15s_0.jpg"
+    "Retailer": "Doon Medicos (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/dKA1L63JvP-pantocid_40mg_tablet_15s_745888_0_1.jpg"
   },
   {
     "Medicine name": "Loperamide",
     "Source/Brand": "Analgesics",
     "Supplier/Distributor": "Torrent Pharma",
-    "Retailer": "NetMeds (Kolkata)",
-    "Latitude": 22.5726,
-    "Longitude": 88.3639,
+    "Retailer": "Dehradun Pharmacy",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
     "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/3xcpnSIm18-lopamide_2mg_tablet_10s_47197_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Prednisolone",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "Apollo Pharmacy (Ahmedabad)",
-    "Latitude": 23.0225,
-    "Longitude": 72.5714,
+    "Retailer": "Rajpur Road Pharmacy (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
     "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/d5gDEpJpWL-omnacortil_5mg_tablet_10s_41809_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Vitamin C",
     "Source/Brand": "Antiseptics",
     "Supplier/Distributor": "Zydus Lifesciences",
-    "Retailer": "MedPlus (Delhi)",
-    "Latitude": 28.6139,
-    "Longitude": 77.209,
-    "Image": "https://www.netmeds.com/product/ldd-bioscience-vitamin-c-tablet-30s-lui5gr-8305404"
+    "Retailer": "Doon Medicos (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/9wR-rRLI-B-celin_new_500mg_tablet_25s_117446_0_2.jpg"
   },
   {
     "Medicine name": "Fluconazole",
     "Source/Brand": "Mood Stabilizers",
     "Supplier/Distributor": "Lupin Pharma",
-    "Retailer": "Sharma Medical Store (Bengaluru)",
-    "Latitude": 12.9716,
-    "Longitude": 77.5946,
-    "Image": "https://www.netmeds.com/product/fluka-150mg-tablet-1s-lui493-8280556"
+    "Retailer": "Dehradun Pharmacy",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/3J9EH7hiui-fluka_150mg_tablet_1s_0_0.jpg"
   },
   {
     "Medicine name": "Rantac",
     "Source/Brand": "Antipiretics",
     "Supplier/Distributor": "Torrent Pharma",
-    "Retailer": "Sharma Medical Store (Lucknow)",
-    "Latitude": 26.8467,
-    "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
-  },
-  {
-    "Medicine name": "Digene",
-    "Source/Brand": "Antipiretics",
-    "Supplier/Distributor": "Lupin Pharma",
-    "Retailer": "MedPlus (Lucknow)",
-    "Latitude": 26.8467,
-    "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
-  },
-  {
-    "Medicine name": "Digene",
-    "Source/Brand": "Analgesics",
-    "Supplier/Distributor": "Dr. Reddy's Distributors",
-    "Retailer": "Wellness Forever (Ahmedabad)",
-    "Latitude": 23.0225,
-    "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
-  },
-  {
-    "Medicine name": "Digene",
-    "Source/Brand": "Antipiretics",
-    "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "Apollo Pharmacy (Hyderabad)",
-    "Latitude": 17.385,
-    "Longitude": 78.4867,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/995252/digene_acidity_gas_relief_gel_mint_flavour_450_ml_0.jpg"
-  },
-  {
-    "Medicine name": "Rantac",
-    "Source/Brand": "Antiseptics",
-    "Supplier/Distributor": "Torrent Pharma",
-    "Retailer": "Wellness Forever (Hyderabad)",
-    "Latitude": 17.385,
-    "Longitude": 78.4867,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
+    "Retailer": "Rajpur Road Pharmacy (Dehradun)",
+    "Latitude": 30.3165,
+    "Longitude": 78.0322,
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/sGcLpf7vFb-rantac_150mg_tablet_30s_31413_0_1.jpg"
   },
   {
     "Medicine name": "Simvastatin",
@@ -168,7 +114,7 @@
     "Retailer": "MedPlus (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://www.netmeds.com/product/simvotin-10mg-tablet-10s-lui60k-8315413"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/rQ4yKaeuGK-simvotin_20mg_tablet_10s_40869_0_3.jpg"
   },
   {
     "Medicine name": "Calcium Carbonate",
@@ -177,7 +123,7 @@
     "Retailer": "1mg Retail (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://www.netmeds.com/product/coral-calcium-tablet-15s-lui25j-8236705"
+    "Image": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01245/v/30.jpg"
   },
   {
     "Medicine name": "Atenolol",
@@ -249,7 +195,7 @@
     "Retailer": "Sharma Medical Store (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/GzJJTpnyq--allegra_120mg_tablet_10s_0_1.jpg"
   },
   {
     "Medicine name": "azee-500",
@@ -285,7 +231,7 @@
     "Retailer": "Gupta Medicos (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://www.netmeds.com/product/zanash-sugar-free-delicious-mango-flavor-suspension-200ml-lzwn91-8499623"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/qIN8tnN15_-becosules_z_capsule_20s_34136_0_1.jpg"
   },
   {
     "Medicine name": "Volini",
@@ -303,7 +249,7 @@
     "Retailer": "NetMeds (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://www.netmeds.com/product/dolo-500mg-tablet-15s-lui7mb-8346671"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/M-aa2nqQ-y-dolo_650_tablet_15s_35281_0_3.jpg"
   },
   {
     "Medicine name": "Vomikind",
@@ -313,15 +259,6 @@
     "Latitude": 17.385,
     "Longitude": 78.4867,
     "Image": "https://www.netmeds.com/product/vomikind-md-4mg-tablet-10s-lui3q1-8270470"
-  },
-  {
-    "Medicine name": "Co-trimoxazole",
-    "Source/Brand": "Analgesics",
-    "Supplier/Distributor": "Sun Pharma Distributors",
-    "Retailer": "Sharma Medical Store (Jaipur)",
-    "Latitude": 26.9124,
-    "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/product/co-trimoxazole-ds-tablet-10s-lui49p-8292266"
   },
   {
     "Medicine name": "Moxifloxacin Eye Drops",
@@ -393,7 +330,7 @@
     "Retailer": "Gupta Medicos (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/product/maxformin-750mg-tablet-15s-lui29u-8239186"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xbzfszt81D-metform_500mg_tablet_20s_0_0.jpg"
   },
   {
     "Medicine name": "Lord's Gastrolin Plus Tablet 25 gm",
@@ -402,7 +339,7 @@
     "Retailer": "Gupta Medicos (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/product/lords-gastrolin-plus-tablet-25-gm-lui6ts-8331795"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/pictures/item/free/resize-w:400/vxcsjmXztT-lords_gastrolin_plus_tablet_25_gm_0_0.jpg"
   },
   {
     "Medicine name": "Metronidazole",
@@ -411,7 +348,7 @@
     "Retailer": "Apollo Pharmacy (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/eSxWuriw6P-metrogyl_400mg_tablet_15s_36773_0_2.jpg"
   },
   {
     "Medicine name": "Loperamide",
@@ -420,7 +357,7 @@
     "Retailer": "NetMeds (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/3xcpnSIm18-lopamide_2mg_tablet_10s_47197_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Ibuprofen",
@@ -438,7 +375,7 @@
     "Retailer": "1mg Retail (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/MS16_3Z17U-budecort_1mg_respule_5x2ml_43652_0_2.jpg"
   },
   {
     "Medicine name": "Paracetamol",
@@ -447,7 +384,7 @@
     "Retailer": "NetMeds (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/M-aa2nqQ-y-dolo_650_tablet_15s_35281_0_3.jpg"
   },
   {
     "Medicine name": "Atorvastatin",
@@ -456,7 +393,7 @@
     "Retailer": "Wellness Forever (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xcj7b_3Mtu-atorlip_10mg_tablet_15s_37296_0_1.jpg"
   },
   {
     "Medicine name": "Ondansetron",
@@ -465,16 +402,7 @@
     "Retailer": "MedPlus (Mumbai)",
     "Latitude": 19.076,
     "Longitude": 72.8777,
-    "Image": "https://via.placeholder.com/150"
-  },
-  {
-    "Medicine name": "Co-trimoxazole",
-    "Source/Brand": "Mood Stabilizers",
-    "Supplier/Distributor": "Apollo Distribution Hub",
-    "Retailer": "Sharma Medical Store (Hyderabad)",
-    "Latitude": 17.385,
-    "Longitude": 78.4867,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/gerrmvWz7Y-ondem_md_4mg_tablet_10s_44702_0_1.jpg"
   },
   {
     "Medicine name": "Fluconazole",
@@ -483,7 +411,7 @@
     "Retailer": "MedPlus (Kolkata)",
     "Latitude": 22.5726,
     "Longitude": 88.3639,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/3J9EH7hiui-fluka_150mg_tablet_1s_0_0.jpg"
   },
   {
     "Medicine name": "Clindamycin",
@@ -492,7 +420,7 @@
     "Retailer": "Apollo Pharmacy (Mumbai)",
     "Latitude": 19.076,
     "Longitude": 72.8777,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/ZmQqGxkUbo-clindac_a_1_gel_20gm_80486_0_1.jpg"
   },
   {
     "Medicine name": "Vitamin D3",
@@ -501,7 +429,7 @@
     "Retailer": "Gupta Medicos (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/el6dLTQV6s-d_rise_60k_capsule_4s_36552_0_1.jpg"
   },
   {
     "Medicine name": "Budesonide",
@@ -510,7 +438,7 @@
     "Retailer": "Sharma Medical Store (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/MS16_3Z17U-budecort_1mg_respule_5x2ml_43652_0_2.jpg"
   },
   {
     "Medicine name": "Loperamide",
@@ -519,7 +447,7 @@
     "Retailer": "Wellness Forever (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/3xcpnSIm18-lopamide_2mg_tablet_10s_47197_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Calpol",
@@ -528,7 +456,7 @@
     "Retailer": "1mg Retail (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/407469/calpol_500mg_tablet_15s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/CvfBFREdUB-calpol_650_tablet_15s_611753_0_0.jpg"
   },
   {
     "Medicine name": "Metformin",
@@ -537,7 +465,7 @@
     "Retailer": "NetMeds (Mumbai)",
     "Latitude": 19.076,
     "Longitude": 72.8777,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xbzfszt81D-metform_500mg_tablet_20s_0_0.jpg"
   },
   {
     "Medicine name": "Diclofenac",
@@ -546,7 +474,7 @@
     "Retailer": "Wellness Forever (Kolkata)",
     "Latitude": 22.5726,
     "Longitude": 88.3639,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://images.apollo247.in/pub/media/catalog/product/r/e/rea0001_3_1.jpg?tr=w-264,q-80,f-webp,dpr-2,c-at_max"
   },
   {
     "Medicine name": "Clopidogrel",
@@ -609,7 +537,7 @@
     "Retailer": "NetMeds (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01245/v/30.jpg"
   },
   {
     "Medicine name": "Calpol",
@@ -618,7 +546,7 @@
     "Retailer": "Apollo Pharmacy (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/407469/calpol_500mg_tablet_15s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/CvfBFREdUB-calpol_650_tablet_15s_611753_0_0.jpg"
   },
   {
     "Medicine name": "Salbutamol",
@@ -627,7 +555,7 @@
     "Retailer": "Wellness Forever (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/Ah6t0jFLze-asthalin_4_tablet_45s_345324_0_2.jpg"
   },
   {
     "Medicine name": "Allegra",
@@ -636,7 +564,7 @@
     "Retailer": "Sharma Medical Store (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/GzJJTpnyq--allegra_120mg_tablet_10s_0_1.jpg"
   },
   {
     "Medicine name": "Loratadine",
@@ -654,7 +582,7 @@
     "Retailer": "NetMeds (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://images.apollo247.in/pub/media/catalog/product/r/e/rea0001_3_1.jpg?tr=w-264,q-80,f-webp,dpr-2,c-at_max"
   },
   {
     "Medicine name": "Ciprofloxacin",
@@ -681,7 +609,7 @@
     "Retailer": "Gupta Medicos (Kolkata)",
     "Latitude": 22.5726,
     "Longitude": 88.3639,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/d5gDEpJpWL-omnacortil_5mg_tablet_10s_41809_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Metformin",
@@ -690,7 +618,7 @@
     "Retailer": "Wellness Forever (Hyderabad)",
     "Latitude": 17.385,
     "Longitude": 78.4867,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xbzfszt81D-metform_500mg_tablet_20s_0_0.jpg"
   },
   {
     "Medicine name": "Levocetirizine",
@@ -717,7 +645,7 @@
     "Retailer": "Wellness Forever (Kolkata)",
     "Latitude": 22.5726,
     "Longitude": 88.3639,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xbzfszt81D-metform_500mg_tablet_20s_0_0.jpg"
   },
   {
     "Medicine name": "Metoclopramide",
@@ -726,7 +654,7 @@
     "Retailer": "Gupta Medicos (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/BElpH0NbPI-metopar_tablet_15s_42606_0_1.jpg"
   },
   {
     "Medicine name": "Crocin Advance",
@@ -735,7 +663,7 @@
     "Retailer": "NetMeds (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/827436/crocin_advance_tablet_15s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/Ut6J1gPOIh-crocin_advance_tablet_20s_137469_0_1.jpg"
   },
   {
     "Medicine name": "Prednisolone",
@@ -744,7 +672,7 @@
     "Retailer": "NetMeds (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/d5gDEpJpWL-omnacortil_5mg_tablet_10s_41809_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Simvastatin",
@@ -753,7 +681,7 @@
     "Retailer": "NetMeds (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/rQ4yKaeuGK-simvotin_20mg_tablet_10s_40869_0_3.jpg"
   },
   {
     "Medicine name": "Levothyroxine",
@@ -771,7 +699,7 @@
     "Retailer": "NetMeds (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xcj7b_3Mtu-atorlip_10mg_tablet_15s_37296_0_1.jpg"
   },
   {
     "Medicine name": "Diclofenac",
@@ -780,7 +708,7 @@
     "Retailer": "MedPlus (Kolkata)",
     "Latitude": 22.5726,
     "Longitude": 88.3639,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://images.apollo247.in/pub/media/catalog/product/r/e/rea0001_3_1.jpg?tr=w-264,q-80,f-webp,dpr-2,c-at_max"
   },
   {
     "Medicine name": "Budesonide",
@@ -789,7 +717,7 @@
     "Retailer": "Gupta Medicos (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/MS16_3Z17U-budecort_1mg_respule_5x2ml_43652_0_2.jpg"
   },
   {
     "Medicine name": "Pantocid",
@@ -816,7 +744,7 @@
     "Retailer": "MedPlus (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/xbzfszt81D-metform_500mg_tablet_20s_0_0.jpg"
   },
   {
     "Medicine name": "Zerodol",
@@ -825,7 +753,7 @@
     "Retailer": "Apollo Pharmacy (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/5_BfmS-c7_-zerodol_100mg_tablet_10s_43324_0_2.jpg"
   },
   {
     "Medicine name": "Vitamin D3",
@@ -834,7 +762,7 @@
     "Retailer": "Sharma Medical Store (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/el6dLTQV6s-d_rise_60k_capsule_4s_36552_0_1.jpg"
   },
   {
     "Medicine name": "Digoxin",
@@ -852,7 +780,7 @@
     "Retailer": "NetMeds (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/ZmQqGxkUbo-clindac_a_1_gel_20gm_80486_0_1.jpg"
   },
   {
     "Medicine name": "Zinc Sulfate",
@@ -861,7 +789,7 @@
     "Retailer": "1mg Retail (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/qIN8tnN15_-becosules_z_capsule_20s_34136_0_1.jpg"
   },
   {
     "Medicine name": "Calcium Carbonate",
@@ -870,7 +798,7 @@
     "Retailer": "MedPlus (Pune)",
     "Latitude": 18.5204,
     "Longitude": 73.8567,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01245/v/30.jpg"
   },
   {
     "Medicine name": "Metoclopramide",
@@ -879,7 +807,7 @@
     "Retailer": "Wellness Forever (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/BElpH0NbPI-metopar_tablet_15s_42606_0_1.jpg"
   },
   {
     "Medicine name": "Salbutamol",
@@ -888,7 +816,7 @@
     "Retailer": "Gupta Medicos (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/Ah6t0jFLze-asthalin_4_tablet_45s_345324_0_2.jpg"
   },
   {
     "Medicine name": "Calcium Carbonate",
@@ -897,7 +825,7 @@
     "Retailer": "NetMeds (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/now/now01245/v/30.jpg"
   },
   {
     "Medicine name": "Paracetamol",
@@ -906,7 +834,7 @@
     "Retailer": "Gupta Medicos (Bengaluru)",
     "Latitude": 12.9716,
     "Longitude": 77.5946,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/M-aa2nqQ-y-dolo_650_tablet_15s_35281_0_3.jpg"
   },
   {
     "Medicine name": "Paracetamol",
@@ -915,7 +843,7 @@
     "Retailer": "MedPlus (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/M-aa2nqQ-y-dolo_650_tablet_15s_35281_0_3.jpg"
   },
   {
     "Medicine name": "Rantac",
@@ -924,7 +852,7 @@
     "Retailer": "Sharma Medical Store (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/826750/rantac_150mg_tablet_30s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/sGcLpf7vFb-rantac_150mg_tablet_30s_31413_0_1.jpg"
   },
   {
     "Medicine name": "Cefuroxime",
@@ -933,7 +861,7 @@
     "Retailer": "Wellness Forever (Ahmedabad)",
     "Latitude": 23.0225,
     "Longitude": 72.5714,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/qIcqjdQi2K-ceftum_500mg_tablet_4s_43379_0_1.jpg"
   },
   {
     "Medicine name": "Loperamide",
@@ -942,7 +870,7 @@
     "Retailer": "Sharma Medical Store (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/3xcpnSIm18-lopamide_2mg_tablet_10s_47197_0_1.jpg?dpr=1"
   },
   {
     "Medicine name": "Losartan",
@@ -951,7 +879,7 @@
     "Retailer": "Wellness Forever (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/HmSvtKOguV-losar_25mg_tablet_15s_0_0.jpg"
   },
   {
     "Medicine name": "Vitamin D3",
@@ -960,7 +888,7 @@
     "Retailer": "1mg Retail (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/el6dLTQV6s-d_rise_60k_capsule_4s_36552_0_1.jpg"
   },
   {
     "Medicine name": "Vitamin D3",
@@ -969,7 +897,7 @@
     "Retailer": "1mg Retail (Chennai)",
     "Latitude": 13.0827,
     "Longitude": 80.2707,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/el6dLTQV6s-d_rise_60k_capsule_4s_36552_0_1.jpg"
   },
   {
     "Medicine name": "Paracetamol",
@@ -978,7 +906,7 @@
     "Retailer": "Apollo Pharmacy (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/M-aa2nqQ-y-dolo_650_tablet_15s_35281_0_3.jpg"
   },
   {
     "Medicine name": "Diclofenac",
@@ -987,7 +915,7 @@
     "Retailer": "MedPlus (Delhi)",
     "Latitude": 28.6139,
     "Longitude": 77.209,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://images.apollo247.in/pub/media/catalog/product/r/e/rea0001_3_1.jpg?tr=w-264,q-80,f-webp,dpr-2,c-at_max"
   },
   {
     "Medicine name": "Allopurinol",
@@ -996,7 +924,7 @@
     "Retailer": "MedPlus (Mumbai)",
     "Latitude": 19.076,
     "Longitude": 72.8777,
-    "Image": "https://via.placeholder.com/150"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/sI0fZiLtbh-uricare_100mg_tablet_10s_0_0.jpg"
   },
   {
     "Medicine name": "Zerodol",
@@ -1005,7 +933,7 @@
     "Retailer": "Gupta Medicos (Lucknow)",
     "Latitude": 26.8467,
     "Longitude": 80.9462,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/100019/zerodol_100mg_tablet_10s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:270/5_BfmS-c7_-zerodol_100mg_tablet_10s_43324_0_2.jpg"
   },
   {
     "Medicine name": "Allegra",
@@ -1014,6 +942,6 @@
     "Retailer": "Apollo Pharmacy (Jaipur)",
     "Latitude": 26.9124,
     "Longitude": 75.7873,
-    "Image": "https://www.netmeds.com/images/product-v1/600x600/827433/allegra_120mg_tablet_10s_0.jpg"
+    "Image": "https://cdn.netmeds.tech/v2/plain-cake-860195/netmed/wrkr/products/assets/item/free/resize-w:400/GzJJTpnyq--allegra_120mg_tablet_10s_0_1.jpg"
   }
 ]

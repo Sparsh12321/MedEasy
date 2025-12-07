@@ -29,17 +29,29 @@ type Props = {
 
 const MedicineCard: React.FC<Props> = ({ medicine }) => {
   const [open, setOpen] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [modalImageError, setModalImageError] = useState(false);
 
   const storeCount = medicine.retailers.length;
+  const placeholderImage = "https://via.placeholder.com/400x300?text=Medicine+Image";
 
   return (
     <>
       {/* Main card */}
       <div className="border border-gray-200 rounded-lg p-3 shadow-sm flex flex-col">
         <img
-          src={medicine.image}
+          src={imageError ? placeholderImage : medicine.image}
           alt={medicine.medicineName}
-          className="w-full h-40 object-cover rounded-md mb-2"
+          className="w-full h-40 object-cover rounded-md mb-2 bg-gray-100"
+          onError={(e) => {
+            console.log("Image failed to load:", medicine.image);
+            setImageError(true);
+          }}
+          onLoad={() => {
+            if (imageError) setImageError(false);
+          }}
+          loading="lazy"
+          crossOrigin="anonymous"
         />
         <h3 className="font-semibold text-base mb-1 line-clamp-2">
           {medicine.medicineName}
@@ -79,9 +91,11 @@ const MedicineCard: React.FC<Props> = ({ medicine }) => {
 
           <div className="flex gap-4 mb-4">
             <img
-              src={medicine.image}
+              src={modalImageError ? placeholderImage : medicine.image}
               alt={medicine.medicineName}
-              className="w-24 h-24 object-cover rounded-md border"
+              className="w-24 h-24 object-cover rounded-md border bg-gray-100"
+              onError={() => setModalImageError(true)}
+              loading="lazy"
             />
             <div className="text-sm text-muted-foreground flex flex-col justify-center">
               <p>

@@ -6,6 +6,8 @@ import {
   type OrderWithItems, type StoreWithInventory, type ReorderRequestWithItems
 } from "@shared/schema";
 import { randomUUID } from "crypto";
+import * as fs from "fs";
+import * as path from "path";
 
 export interface IStorage {
   // User operations
@@ -66,6 +68,177 @@ export class MemStorage implements IStorage {
   }
 
   private initializeData() {
+    try {
+      // Read data.json from backend/public/data.json
+      // Try multiple possible paths to handle different execution contexts
+      const possiblePaths = [
+        path.join(__dirname, "../../backend/public/data.json"),
+        path.join(process.cwd(), "backend/public/data.json"),
+        path.join(process.cwd(), "../backend/public/data.json"),
+      ];
+      
+      let dataJsonPath: string | null = null;
+      for (const p of possiblePaths) {
+        if (fs.existsSync(p)) {
+          dataJsonPath = p;
+          break;
+        }
+      }
+      
+      if (!dataJsonPath) {
+        throw new Error(`data.json not found. Tried: ${possiblePaths.join(", ")}`);
+      }
+      
+      const rawData = fs.readFileSync(dataJsonPath, "utf8");
+      const dataJson = JSON.parse(rawData);
+
+      // Initialize categories
+      const categoryMap = new Map<string, string>();
+      const categories = [
+        { id: "cat1", name: "Cold & Cough", description: "Medicines for cold and cough relief", icon: "thermometer", parentId: null },
+        { id: "cat2", name: "Heart Care", description: "Cardiovascular medicines", icon: "heart", parentId: null },
+        { id: "cat3", name: "Diabetes Care", description: "Diabetic care products", icon: "activity", parentId: null },
+        { id: "cat4", name: "Women Care", description: "Women's health products", icon: "user-check", parentId: null },
+        { id: "cat5", name: "Vitamins", description: "Vitamins and supplements", icon: "sun", parentId: null },
+        { id: "cat6", name: "Baby Care", description: "Baby care products", icon: "shield", parentId: null },
+        { id: "cat7", name: "Analgesics", description: "Pain relief medicines", icon: "thermometer", parentId: null },
+        { id: "cat8", name: "Antibiotics", description: "Antibiotic medicines", icon: "shield", parentId: null },
+        { id: "cat9", name: "Mood Stabilizers", description: "Mood stabilizing medicines", icon: "heart", parentId: null },
+        { id: "cat10", name: "Antiseptics", description: "Antiseptic products", icon: "shield", parentId: null },
+      ];
+      categories.forEach(cat => {
+        this.categories.set(cat.id, cat);
+        categoryMap.set(cat.name.toLowerCase(), cat.id);
+      });
+
+      // Map brand/category to category ID
+      const getCategoryId = (brand: string): string => {
+        const brandLower = brand.toLowerCase();
+        if (brandLower.includes("vitamin") || brandLower.includes("supplement")) return "cat5";
+        if (brandLower.includes("analgesic") || brandLower.includes("pain")) return "cat7";
+        if (brandLower.includes("antibiotic")) return "cat8";
+        if (brandLower.includes("mood") || brandLower.includes("stabilizer")) return "cat9";
+        if (brandLower.includes("antiseptic")) return "cat10";
+        return "cat1"; // Default to Cold & Cough
+      };
+
+      // Extract unique medicines from data.json
+      const medicineMap = new Map<string, Medicine>();
+      const medicineStoreMap = new Map<string, Set<string>>(); // medicine name -> store IDs
+
+      dataJson.forEach((item: any) => {
+        const medicineName = item["Medicine name"]?.trim();
+        const brand = item["Source/Brand"]?.trim() || "Unknown";
+        const image = item["Image"] || "";
+        const retailerName = item["Retailer"]?.trim() || "";
+
+        if (!medicineName) return;
+
+        const medKey = medicineName.toLowerCase();
+        if (!medicineMap.has(medKey)) {
+          const medId = randomUUID();
+          const medicine: Medicine = {
+            id: medId,
+            name: medicineName,
+            manufacturer: brand,
+            categoryId: getCategoryId(brand),
+            description: `${medicineName} - ${brand}`,
+            dosage: "",
+            packSize: "",
+            mrp: "100.00",
+            price: "80.00",
+            discount: 20,
+            prescription: false,
+            image: image,
+            createdAt: new Date()
+          };
+          medicineMap.set(medKey, medicine);
+          medicineStoreMap.set(medKey, new Set());
+        }
+      });
+
+      // Add medicines to storage
+      medicineMap.forEach(med => this.medicines.set(med.id, med));
+
+      // Extract unique stores (retailers) from data.json
+      const storeMap = new Map<string, Store>();
+      const storeInventoryMap = new Map<string, Map<string, number>>(); // store name -> medicine name -> quantity
+
+      dataJson.forEach((item: any) => {
+        const retailerName = item["Retailer"]?.trim() || "";
+        const medicineName = item["Medicine name"]?.trim() || "";
+        const latitude = item["Latitude"];
+        const longitude = item["Longitude"];
+
+        if (!retailerName) return;
+
+        if (!storeMap.has(retailerName)) {
+          const storeId = randomUUID();
+          const store: Store = {
+            id: storeId,
+            name: retailerName,
+            ownerId: `retailer-${storeId}`,
+            address: `${retailerName}`,
+            location: latitude && longitude ? `${latitude}, ${longitude}` : "Unknown",
+            phone: "+91-0000000000",
+            license: `LIC-${storeId.substring(0, 8).toUpperCase()}`,
+            rating: "4.0",
+            isActive: true,
+            createdAt: new Date()
+          };
+          storeMap.set(retailerName, store);
+          storeInventoryMap.set(retailerName, new Map());
+        }
+
+        // Track which medicines are in which stores
+        const storeInv = storeInventoryMap.get(retailerName)!;
+        const currentQty = storeInv.get(medicineName) || 0;
+        storeInv.set(medicineName, currentQty + 1); // Increment quantity for each occurrence
+      });
+
+      // Add stores to storage
+      storeMap.forEach(store => this.stores.set(store.id, store));
+
+      // Create inventory entries
+      let invCounter = 0;
+      storeInventoryMap.forEach((medicineQtyMap, retailerName) => {
+        const store = Array.from(storeMap.values()).find(s => s.name === retailerName);
+        if (!store) return;
+
+        medicineQtyMap.forEach((quantity, medicineName) => {
+          const medKey = medicineName.toLowerCase();
+          const medicine = Array.from(medicineMap.values()).find(m => m.name.toLowerCase() === medKey);
+          if (!medicine) return;
+
+          // Determine status based on quantity
+          const reorderLevel = 10;
+          let status: "in_stock" | "low_stock" | "out_of_stock" = "in_stock";
+          if (quantity === 0) status = "out_of_stock";
+          else if (quantity <= reorderLevel) status = "low_stock";
+
+          const inventory: Inventory = {
+            id: randomUUID(),
+            storeId: store.id,
+            medicineId: medicine.id,
+            quantity: quantity,
+            reorderLevel: reorderLevel,
+            status: status,
+            lastUpdated: new Date()
+          };
+          this.inventory.set(inventory.id, inventory);
+          invCounter++;
+        });
+      });
+
+      console.log(`✅ Loaded ${medicineMap.size} medicines, ${storeMap.size} stores, ${invCounter} inventory items from data.json`);
+    } catch (error) {
+      console.error("❌ Error loading data.json, falling back to default data:", error);
+      // Fallback to default hardcoded data if data.json can't be loaded
+      this.initializeDefaultData();
+    }
+  }
+
+  private initializeDefaultData() {
     // Initialize categories
     const categories = [
       { id: "cat1", name: "Cold & Cough", description: "Medicines for cold and cough relief", icon: "thermometer", parentId: null },
@@ -77,7 +250,7 @@ export class MemStorage implements IStorage {
     ];
     categories.forEach(cat => this.categories.set(cat.id, cat));
 
-    // Initialize medicines
+    // Initialize default medicines
     const medicines = [
       {
         id: "med1",
@@ -93,86 +266,11 @@ export class MemStorage implements IStorage {
         prescription: false,
         image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
         createdAt: new Date()
-      },
-      {
-        id: "med2",
-        name: "Vitamin D3 60K IU",
-        manufacturer: "Sun Pharma",
-        categoryId: "cat5",
-        description: "Vitamin D3 supplement",
-        dosage: "60,000 IU",
-        packSize: "4 capsules",
-        mrp: "120.00",
-        price: "89.00",
-        discount: 26,
-        prescription: false,
-        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-        createdAt: new Date()
-      },
-      {
-        id: "med3",
-        name: "Crocin Advance",
-        manufacturer: "GSK Pharma",
-        categoryId: "cat1",
-        description: "Fast pain relief",
-        dosage: "500mg",
-        packSize: "15 tablets",
-        mrp: "40.00",
-        price: "32.00",
-        discount: 20,
-        prescription: false,
-        image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-        createdAt: new Date()
-      },
-      {
-        id: "med4",
-        name: "Omega 3 Fish Oil",
-        manufacturer: "Himalaya",
-        categoryId: "cat5",
-        description: "Heart and brain health supplement",
-        dosage: "1000mg",
-        packSize: "60 capsules",
-        mrp: "600.00",
-        price: "450.00",
-        discount: 25,
-        prescription: false,
-        image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-        createdAt: new Date()
-      },
-      {
-        id: "med5",
-        name: "Metformin 500mg",
-        manufacturer: "Cipla Ltd",
-        categoryId: "cat3",
-        description: "Diabetes management",
-        dosage: "500mg",
-        packSize: "30 tablets",
-        mrp: "85.00",
-        price: "68.00",
-        discount: 20,
-        prescription: true,
-        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-        createdAt: new Date()
-      },
-      {
-        id: "med6",
-        name: "Cetirizine 10mg",
-        manufacturer: "Dr. Reddy's",
-        categoryId: "cat1",
-        description: "Allergy relief",
-        dosage: "10mg",
-        packSize: "10 tablets",
-        mrp: "25.00",
-        price: "20.00",
-        discount: 20,
-        prescription: false,
-        image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-        createdAt: new Date()
       }
     ];
     medicines.forEach(med => this.medicines.set(med.id, med));
 
-    // Initialize stores
+    // Initialize default stores
     const stores = [
       {
         id: "store1",
@@ -185,47 +283,9 @@ export class MemStorage implements IStorage {
         rating: "4.5",
         isActive: true,
         createdAt: new Date()
-      },
-      {
-        id: "store2",
-        name: "Apollo Pharmacy",
-        ownerId: "retailer2",
-        address: "456 Medical Road, Karol Bagh",
-        location: "Delhi, 110005",
-        phone: "+91-9876543211",
-        license: "DL-PHARM-2024-002",
-        rating: "4.3",
-        isActive: true,
-        createdAt: new Date()
-      },
-      {
-        id: "store3",
-        name: "HealthPlus Store",
-        ownerId: "retailer3",
-        address: "789 Wellness Avenue, Lajpat Nagar",
-        location: "Delhi, 110024",
-        phone: "+91-9876543212",
-        license: "DL-PHARM-2024-003",
-        rating: "4.7",
-        isActive: true,
-        createdAt: new Date()
       }
     ];
     stores.forEach(store => this.stores.set(store.id, store));
-
-    // Initialize inventory
-    const inventoryItems = [
-      { id: "inv1", storeId: "store1", medicineId: "med1", quantity: 125, reorderLevel: 20, status: "in_stock", lastUpdated: new Date() },
-      { id: "inv2", storeId: "store1", medicineId: "med2", quantity: 8, reorderLevel: 10, status: "low_stock", lastUpdated: new Date() },
-      { id: "inv3", storeId: "store1", medicineId: "med3", quantity: 45, reorderLevel: 15, status: "in_stock", lastUpdated: new Date() },
-      { id: "inv4", storeId: "store1", medicineId: "med4", quantity: 0, reorderLevel: 5, status: "out_of_stock", lastUpdated: new Date() },
-      { id: "inv5", storeId: "store2", medicineId: "med1", quantity: 78, reorderLevel: 20, status: "in_stock", lastUpdated: new Date() },
-      { id: "inv6", storeId: "store2", medicineId: "med2", quantity: 15, reorderLevel: 10, status: "low_stock", lastUpdated: new Date() },
-      { id: "inv7", storeId: "store2", medicineId: "med5", quantity: 32, reorderLevel: 10, status: "in_stock", lastUpdated: new Date() },
-      { id: "inv8", storeId: "store3", medicineId: "med1", quantity: 95, reorderLevel: 20, status: "in_stock", lastUpdated: new Date() },
-      { id: "inv9", storeId: "store3", medicineId: "med6", quantity: 42, reorderLevel: 15, status: "in_stock", lastUpdated: new Date() },
-    ];
-    inventoryItems.forEach(item => this.inventory.set(item.id, item as Inventory));
   }
 
   async getUser(id: string): Promise<User | undefined> {
