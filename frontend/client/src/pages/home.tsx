@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/header";
+import StoreMapModal from "@/components/ui/StoreMapModal";
 import CategoryGrid from "@/components/category-grid";
 import MedicineCard from "@/components/medicine-card";
 import { Button } from "@/components/ui/button";
@@ -25,7 +26,6 @@ import type { MedicineWithInventory } from "@shared/schema";
 import CustomerMedicinesGrid from "@/components/ui/customer-grid";
 
 export default function Home() {
-  // You’re fetching medicines but not using `featuredMedicines` right now; it’s fine to keep or remove
   const { data: medicines, isLoading } = useQuery<MedicineWithInventory[]>({
     queryKey: ["/api/medicines"],
   });
@@ -36,6 +36,9 @@ export default function Home() {
   const [userLat, setUserLat] = useState<number | null>(null);
   const [userLng, setUserLng] = useState<number | null>(null);
   const [locationReady, setLocationReady] = useState(false);
+
+  // 🔹 Modal state for map
+  const [mapOpen, setMapOpen] = useState(false);
 
   useEffect(() => {
     // We let Header handle geolocation + saving to localStorage.
@@ -103,6 +106,7 @@ export default function Home() {
                   variant="outline"
                   className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
                   data-testid="button-find-store"
+                  onClick={() => setMapOpen(true)}   // ⭐ open map from hero
                 >
                   Find Nearby Store
                 </Button>
@@ -141,6 +145,7 @@ export default function Home() {
             <div
               className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center"
               data-testid="action-find-store"
+              onClick={() => setMapOpen(true)}  // ⭐ open map from quick action
             >
               <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-secondary" />
@@ -199,6 +204,14 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Map Modal for nearby stores */}
+      <StoreMapModal
+        open={mapOpen}
+        onOpenChange={setMapOpen}
+        userLat={userLat}
+        userLng={userLng}
+      />
 
       {/* Trust Badges */}
       <section className="py-16 bg-muted/30" data-testid="trust-section">

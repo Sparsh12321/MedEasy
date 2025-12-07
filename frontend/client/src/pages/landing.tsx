@@ -1,12 +1,12 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
+
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 
 export default function Landing() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-
+     
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl w-full text-center space-y-8">
           <div>
@@ -25,12 +25,12 @@ export default function Landing() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/login">
+            <Link to="/login">
               <Button size="lg" className="w-full sm:w-auto">
                 Login
               </Button>
             </Link>
-            <Link href="/signup">
+            <Link to="/signup">
               <Button size="lg" variant="outline" className="w-full sm:w-auto">
                 Create consumer account
               </Button>
@@ -60,7 +60,7 @@ export default function Landing() {
 
           <p className="text-xs text-muted-foreground">
             Partners can log in via{" "}
-            <Link href="/login/wholesaleretail">
+            <Link to="/login/wholesaleretail">
               <span className="text-primary underline">Retailer / Wholesaler login</span>
             </Link>
             .
