@@ -54,9 +54,9 @@ export default function StoreMapModal({
   userLng,
 }: StoreMapModalProps) {
   const { data: retailers, isLoading } = useQuery<Retailer[]>({
-    queryKey: ["/retailers"],
+    queryKey: ["/api/customerMedicines"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/retailers");
+      const res = await fetch("http://localhost:3000/api/customerMedicines");
       if (!res.ok) throw new Error("Failed to fetch retailers");
       return res.json();
     },

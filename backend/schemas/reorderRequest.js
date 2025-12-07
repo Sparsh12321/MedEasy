@@ -23,15 +23,9 @@ const ReorderRequestSchema = mongoose.Schema(
       default: "pending",
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-const ReorderRequestModel = mongoose.model("reorder_request", ReorderRequestSchema);
+const ReorderRequestModel = mongoose.model("reorderRequest", ReorderRequestSchema);
 module.exports = ReorderRequestModel;
-
-
-
-
-
-
 

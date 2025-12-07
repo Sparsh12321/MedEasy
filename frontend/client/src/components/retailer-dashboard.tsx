@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Package, AlertTriangle, TrendingUp, RefreshCw, ShoppingCart } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Package, AlertTriangle, TrendingUp, RefreshCw } from "lucide-react";
 import Header from "./header";
 
 interface RetailerStats {
@@ -14,7 +13,6 @@ interface RetailerStats {
   pendingReorders: number;
   inventory: any[];
   lowStockItems: any[];
-  reorderRequests?: any[];
 }
 
 // storeId is now OPTIONAL – if not passed, we read from localStorage
@@ -28,57 +26,25 @@ export default function RetailerDashboard({ storeId }: RetailerDashboardProps) {
   const effectiveStoreId =
     storeId || (typeof window !== "undefined" ? localStorage.getItem("userId") || "" : "");
 
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { data: stats, isLoading, refetch } = useQuery<RetailerStats>({
-    queryKey: ["retailer-dashboard", effectiveStoreId],
-    queryFn: async () => {
-      const id = effectiveStoreId || "all";
-      const res = await fetch(`http://localhost:3000/dashboard/retailer/${id}`);
-      if (!res.ok) {
-        throw new Error("Failed to load retailer stats from Mongo backend");
-      }
-      return res.json();
-    },
+  const { data: stats, isLoading } = useQuery<RetailerStats>({
+    queryKey: ["/api/dashboard/retailer", effectiveStoreId],
+    // if you have a global fetcher in queryClient, no queryFn needed;
+    // otherwise uncomment and adjust the URL:
+    // queryFn: async () => {
+    //   const res = await fetch(
+    //     `http://localhost:3000/api/dashboard/retailer?storeId=${effectiveStoreId}`
+    //   );
+    //   if (!res.ok) throw new Error("Failed to load retailer stats");
+    //   return res.json();
+    // },
     enabled: !!effectiveStoreId, // don't run query until we have an id
-    refetchInterval: 5000, // Auto-refresh every 5 seconds to show approved stock updates
   });
 
   const inventory = (stats?.inventory ?? []) as any[];
-
-  // Aggregate by medicine so the same medicine from multiple sources
-  // doesn't appear as many separate, repetitive rows in the table.
-  // Use the FIRST value found instead of summing to prevent inflated numbers
-  const aggregatedMap: Record<string, any> = {};
-  for (const item of inventory) {
-    const key = item.medicineId || item.medicine?.id;
-    if (!key) continue;
-
-    if (!aggregatedMap[key]) {
-      aggregatedMap[key] = { ...item };
-    } else {
-      // Don't sum quantities - use the first value found
-      // This ensures the displayed value matches what was set, not a sum
-      // aggregatedMap[key].quantity = (aggregatedMap[key].quantity ?? 0) + (item.quantity ?? 0);
-
-      const statusOrder: Record<string, number> = {
-        out_of_stock: 2,
-        low_stock: 1,
-        in_stock: 0,
-      };
-      const currentStatus = aggregatedMap[key].status || "in_stock";
-      const newStatus = item.status || "in_stock";
-      if ((statusOrder[newStatus] ?? 0) > (statusOrder[currentStatus] ?? 0)) {
-        aggregatedMap[key].status = newStatus;
-      }
-    }
-  }
-
-  const aggregatedInventory = Object.values(aggregatedMap);
-
-  const filteredInventory = aggregatedInventory.filter((item: any) => {
+  const filteredInventory = inventory.filter((item) => {
     const name = item.medicine?.name || "";
     const manufacturer = item.medicine?.manufacturer || "";
     if (!searchTerm) return true;
@@ -105,28 +71,18 @@ export default function RetailerDashboard({ storeId }: RetailerDashboardProps) {
     else if (nextQty <= reorderLevel) status = "low_stock";
 
     try {
-      // Call Mongo-backed backend to update quantity - set EXACT value entered
-      const res = await fetch("http://localhost:3000/inventory/update", {
+      await fetch("/api/inventory", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          storeId: row.storeId || effectiveStoreId,
           medicineId: row.medicineId,
-          quantity: nextQty, // EXACT value user entered
-          userRole: "retailer",
+          quantity: nextQty,
+          reorderLevel,
+          status,
         }),
       });
-
-      if (!res.ok) {
-        throw new Error("Failed to update stock");
-      }
-
-      const data = await res.json();
-      
-      // Immediately refetch to show updated value
-      await queryClient.invalidateQueries({ queryKey: ["retailer-dashboard", effectiveStoreId] });
-      await refetch();
-      
-      window.alert(`Stock updated to ${nextQty} units successfully!`);
+      queryClient.invalidateQueries({ queryKey: ["/api/dashboard/retailer", effectiveStoreId] });
     } catch (err) {
       console.error(err);
       window.alert("Failed to update stock. Please try again.");
@@ -134,50 +90,10 @@ export default function RetailerDashboard({ storeId }: RetailerDashboardProps) {
   }
 
   function handleReorder(row: any) {
-    const currentQty = row.quantity ?? 0;
-    const input = window.prompt(
-      `Reorder quantity for ${row.medicine?.name || "this medicine"}:`,
-      String(Math.max(1, Math.min(currentQty || 10, 100))),
+    window.alert(
+      `Reorder request for "${row.medicine?.name || "this medicine"}" would be created here.\n\n` +
+        "You can later wire this to /api/reorder-requests.",
     );
-    if (!input) return;
-    const qty = Number(input);
-    if (Number.isNaN(qty) || qty <= 0) {
-      window.alert("Please enter a valid positive number.");
-      return;
-    }
-
-    const retailerUserId =
-      typeof window !== "undefined" ? localStorage.getItem("userId") || "" : "";
-    if (!retailerUserId) {
-      window.alert("Retailer user id not found. Please log in again.");
-      return;
-    }
-
-    fetch("http://localhost:3000/reorder-requests", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        retailerUserId,
-        medicineId: row.medicineId,
-        quantity: qty, // EXACT quantity user entered
-      }),
-    })
-      .then(async (res) => {
-        if (!res.ok) throw new Error("Failed to create reorder request");
-        const data = await res.json();
-        
-        // Immediately refetch to show the new reorder request in the list
-        await queryClient.invalidateQueries({
-          queryKey: ["retailer-dashboard", effectiveStoreId],
-        });
-        await refetch();
-        
-        window.alert(`Reorder request for ${qty} units created successfully!`);
-      })
-      .catch((err) => {
-        console.error(err);
-        window.alert("Failed to create reorder request. Please try again.");
-      });
   }
 
   if (!effectiveStoreId) {
@@ -266,27 +182,7 @@ export default function RetailerDashboard({ storeId }: RetailerDashboardProps) {
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Inventory Management */}
         <div data-testid="section-inventory">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-semibold">Inventory Management</h3>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => refetch()}
-              className="text-xs"
-            >
-              Refresh
-            </Button>
-          </div>
-          <div className="mb-4">
-            <Button
-              onClick={() => navigate("/create-order")}
-              className="bg-primary text-primary-foreground"
-              size="default"
-            >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Create Order
-            </Button>
-          </div>
+          <h3 className="text-xl font-semibold mb-4">Inventory Management</h3>
           <div className="bg-white border border-border rounded-xl overflow-hidden">
             <div className="p-4 border-b">
               <div className="flex items-center justify-between">
@@ -388,82 +284,92 @@ export default function RetailerDashboard({ storeId }: RetailerDashboardProps) {
           </div>
         </div>
 
-        {/* Reorder Requests (Mongo-backed) */}
+        {/* Reorder Requests */}
         <div data-testid="section-reorder-requests">
           <h3 className="text-xl font-semibold mb-4">Reorder Requests</h3>
-          <div className="bg-white border border-border rounded-xl overflow-hidden">
-            <div className="p-4 border-b">
-              <div className="flex items-center justify-between">
-                <h4 className="font-medium">Recent Requests</h4>
+          <div className="space-y-4">
+            <div
+              className="bg-white border border-border rounded-xl p-4"
+              data-testid="request-rr2024001"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <p className="font-medium" data-testid="text-request-id">
+                    Request #RR2024001
+                  </p>
+                  <p
+                    className="text-sm text-muted-foreground"
+                    data-testid="text-request-date"
+                  >
+                    March 20, 2024
+                  </p>
+                </div>
+                <Badge
+                  className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium"
+                  data-testid="badge-pending"
+                >
+                  Pending
+                </Badge>
+              </div>
+              <div
+                className="text-sm text-muted-foreground mb-2"
+                data-testid="text-request-summary"
+              >
+                15 items • Estimated ₹12,450
+              </div>
+              <div className="flex space-x-2">
+                <Button
+                  className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm hover:bg-primary/90"
+                  data-testid="button-confirm-order"
+                >
+                  Confirm Order
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border border-border px-3 py-1 rounded text-sm hover:bg-muted"
+                  data-testid="button-edit-request"
+                >
+                  Edit Request
+                </Button>
               </div>
             </div>
 
-            <div className="space-y-0" data-testid="orders-list">
-              {(!stats?.reorderRequests || stats.reorderRequests.length === 0) && (
-                <div className="p-4 text-sm text-muted-foreground">
-                  No reorder requests yet. Use the "Reorder" button in the inventory table or "Create Order" to create one.
+            <div
+              className="bg-white border border-border rounded-xl p-4"
+              data-testid="request-rr2024002"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <p className="font-medium" data-testid="text-request-id">
+                    Request #RR2024002
+                  </p>
+                  <p
+                    className="text-sm text-muted-foreground"
+                    data-testid="text-request-date"
+                  >
+                    March 18, 2024
+                  </p>
                 </div>
-              )}
-
-              {stats?.reorderRequests?.map((req: any) => (
-                <div className="p-4 border-b" key={req.id}>
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <p className="font-medium" data-testid="text-request-id">
-                        {req.type === "order" ? "Order" : "Request"} #{req.requestNumber || req.id.slice(-8)}
-                      </p>
-                      {req.type === "reorder_request" && req.medicine && (
-                        <p className="text-sm text-muted-foreground" data-testid="text-medicine">
-                          {req.medicine.name} • {req.medicine.manufacturer} • Qty: {req.quantity}
-                        </p>
-                      )}
-                      {req.type === "order" && req.items && (
-                        <p className="text-sm text-muted-foreground" data-testid="text-order-info">
-                          {req.items.length} medicine(s) • ₹{req.totalAmount?.toLocaleString() || 0}
-                        </p>
-                      )}
-                      <p
-                        className="text-xs text-muted-foreground"
-                        data-testid="text-request-date"
-                      >
-                        {new Date(req.createdAt).toLocaleString()}
-                      </p>
-                    </div>
-                    <Badge
-                      className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        req.status === "pending"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : req.status === "approved"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
-                      }`}
-                      data-testid={`badge-${req.status}`}
-                    >
-                      {req.status}
-                    </Badge>
-                  </div>
-                  {req.type === "reorder_request" && (
-                    <div
-                      className="text-sm text-muted-foreground mb-3"
-                      data-testid="text-order-summary"
-                    >
-                      {req.quantity} units requested
-                    </div>
-                  )}
-                  {req.type === "order" && req.items && (
-                    <div className="mt-3 pt-3 border-t">
-                      <p className="text-xs font-medium text-muted-foreground mb-2">Medicines:</p>
-                      <ul className="space-y-1">
-                        {req.items.map((item: any, idx: number) => (
-                          <li key={idx} className="text-xs text-muted-foreground">
-                            • {item.medicineName} ({item.medicineManufacturer}) - Qty: {item.quantity}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ))}
+                <Badge
+                  className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  data-testid="badge-approved"
+                >
+                  Approved
+                </Badge>
+              </div>
+              <div
+                className="text-sm text-muted-foreground mb-2"
+                data-testid="text-request-summary"
+              >
+                8 items • ₹6,780
+              </div>
+              <Button
+                variant="link"
+                className="text-primary hover:underline text-sm font-medium p-0"
+                data-testid="button-track-delivery"
+              >
+                Track Delivery
+              </Button>
             </div>
           </div>
         </div>

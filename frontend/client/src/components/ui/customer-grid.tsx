@@ -47,7 +47,7 @@ const CustomerMedicinesGrid: React.FC = () => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const res = await fetch("http://localhost:3000/retailers");
+        const res = await fetch("http://localhost:3000/api/customerMedicines");
         const data: Retailer[] = await res.json();
 
         // 🔹 user location from localStorage
@@ -60,19 +60,11 @@ const CustomerMedicinesGrid: React.FC = () => {
         const map = new Map<string, AggregatedMedicine>();
 
         data.forEach((retailer) => {
-          if (!retailer.Medicines || retailer.Medicines.length === 0) {
-            return;
-          }
-          
           retailer.Medicines.forEach((med) => {
             const m = med.Medicine_name;
-            // Skip if Medicine_name is null or doesn't have the required fields
-            if (!m || !m.Medicine_name) {
-              return;
-            }
+            if (!m?.Medicine_name) return;
 
             // If we have user location, compute distance
-            // But don't filter out - just calculate distance for display
             let distance: number | undefined = undefined;
             if (
               hasLocation &&
@@ -85,9 +77,8 @@ const CustomerMedicinesGrid: React.FC = () => {
                 retailer.Latitude,
                 retailer.Longitude
               );
-              // Only skip if distance is extremely far (like > 5000km) - this catches invalid coordinates
-              // Otherwise, show all medicines but with distance info
-              if (distance > 5000) return;
+              // skip this retailer if outside radius
+              if (distance > RADIUS_KM) return;
             }
 
             const key = m.Medicine_name.trim().toLowerCase();
@@ -101,18 +92,12 @@ const CustomerMedicinesGrid: React.FC = () => {
             const existing = map.get(key);
 
             if (!existing) {
-              // Get image URL - m is already Medicine_name object, so access Image directly
-              let imageUrl = m.Image || "";
-              
-              if (!imageUrl) {
-                imageUrl = "https://via.placeholder.com/400x300?text=Medicine+Image";
-              }
-              
               map.set(key, {
                 id: key,
                 medicineName: m.Medicine_name.trim(),
-                brand: m.Brand || "Unknown",
-                image: imageUrl,
+                brand: m.Brand,
+                image:
+                  m.Image || "https://via.placeholder.com/150?text=No+Image",
                 retailers: [retailerEntry],
               });
             } else {
@@ -126,20 +111,10 @@ const CustomerMedicinesGrid: React.FC = () => {
 
         let aggregated = Array.from(map.values());
 
-        // Sort by distance if location is available (closest first)
-        if (latStr && lngStr && aggregated.length > 0) {
-          aggregated = aggregated.map(med => ({
-            ...med,
-            retailers: med.retailers.sort((a, b) => {
-              const distA = a.distanceKm ?? Infinity;
-              const distB = b.distanceKm ?? Infinity;
-              return distA - distB;
-            })
-          }));
-          // Only filter out if ALL retailers are invalid (> 5000km away)
-          aggregated = aggregated.filter((m) => 
-            m.retailers.some(r => (r.distanceKm ?? Infinity) <= 5000)
-          );
+        // If we have location, you might want to drop medicines
+        // that end up with zero nearby retailers.
+        if (latStr && lngStr) {
+          aggregated = aggregated.filter((m) => m.retailers.length > 0);
         }
 
         setMedicines(aggregated);

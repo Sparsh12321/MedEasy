@@ -36,10 +36,9 @@ const OrderSchema = mongoose.Schema(
       default: 0,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const OrderModel = mongoose.model("order", OrderSchema);
 module.exports = OrderModel;
-
 

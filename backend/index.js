@@ -16,7 +16,7 @@ app.use(cors());
 const medicineMap = new Map();
 data.forEach(item => {
   const medName = item["Medicine name"];
-  if (!medicineMap.has(medName)) {
+  if (medName && !medicineMap.has(medName)) {
     medicineMap.set(medName, {
       Medicine_name: medName,
       Brand: item["Source/Brand"],
@@ -30,14 +30,14 @@ const filteredData = Array.from(medicineMap.values());
 const retailerMap = new Map();
 data.forEach(item => {
   const retailerName = item["Retailer"];
-  if (!retailerName) return; // Skip if no retailer name
+  if (!retailerName) return;
   
   if (!retailerMap.has(retailerName)) {
     retailerMap.set(retailerName, {
       Name: retailerName,
       Latitude: item["Latitude"] || null,
       Longitude: item["Longitude"] || null,
-      medicines: new Set() // Track which medicines this retailer has
+      medicines: new Set()
     });
   }
   if (item["Medicine name"]) {
@@ -49,14 +49,14 @@ data.forEach(item => {
 const wholesalerMap = new Map();
 data.forEach(item => {
   const wholesalerName = item["Supplier/Distributor"];
-  if (!wholesalerName) return; // Skip if no wholesaler name
+  if (!wholesalerName) return;
   
   if (!wholesalerMap.has(wholesalerName)) {
     wholesalerMap.set(wholesalerName, {
       Name: wholesalerName,
       Latitude: item["Latitude"] || null,
       Longitude: item["Longitude"] || null,
-      medicines: new Set() // Track which medicines this wholesaler has
+      medicines: new Set()
     });
   }
   if (item["Medicine name"]) {
@@ -64,40 +64,58 @@ data.forEach(item => {
   }
 });
 
-// GET medicines
-app.get("/medicines", async (req, res) => {
+app.get("/api/customerMedicines",async(req,res)=>{
+  const medicines=await RetailerModel.find().populate("Medicines.Medicine_name");
+  return res.json(medicines);
+});
+app.get("/api/wholeSalerMedicines",async(req,res)=>{
+  const medicines=await WholesalerModel.find().populate("Medicines.Medicine_name");
+  return res.json(medicines);
+});
+
+// GET list of all wholesalers (for order creation dropdown)
+app.get("/api/wholesalers/list", async (req, res) => {
   try {
-    const medicines = await MedcineModel.find();
-    return res.json(medicines);
+    const wholesalers = await WholesalerModel.find().select("_id Name");
+    return res.json(wholesalers.map(w => ({
+      id: w._id.toString(),
+      name: w.Name || "Unknown Wholesaler",
+    })));
   } catch (err) {
-    console.error("Error fetching medicines:", err);
-    return res.status(500).json({ error: "Failed to fetch medicines" });
+    console.error("Error fetching wholesalers list:", err);
+    return res.status(500).json({ message: "Failed to fetch wholesalers" });
   }
 });
 
-// GET retailers
-app.get("/retailers", async (req, res) => {
-  try {
-    const retailers = await RetailerModel.find().populate("Medicines.Medicine_name");
-    return res.json(retailers);
-  } catch (err) {
-    console.error("Error fetching retailers:", err);
-    return res.status(500).json({ error: "Failed to fetch retailers" });
-  }
-});
+// app.get("/medicines", async (req, res) => {
+//   try {
+//     await MedcineModel.insertMany(filteredData);
+//     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
+//   } catch (err) {
+//     console.error("❌ Error inserting:", err);
+//     res.status(500).send("Error inserting data");
+//   }
+// });
+// app.get("/retailers", async (req, res) => {
+//   try {
+//     await RetailerModel.insertMany(RetailerData);
+//     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
+//   } catch (err) {
+//     console.error("❌ Error inserting:", err);
+//     res.status(500).send("Error inserting data");
+//   }
+// });
+// app.get("/wholesalers", async (req, res) => {
+//   try {
+//     await WholesalerModel.insertMany(WholerSalerData);
+//     res.send("✅ Medicines inserted successfully (name, brand, image only)!");
+//   } catch (err) {
+//     console.error("❌ Error inserting:", err);
+//     res.status(500).send("Error inserting data");
+//   }
+// });
 
-// GET wholesalers
-app.get("/wholesalers", async (req, res) => {
-  try {
-    const wholesalers = await WholesalerModel.find().populate("Medicines.Medicine_name");
-    return res.json(wholesalers);
-  } catch (err) {
-    console.error("Error fetching wholesalers:", err);
-    return res.status(500).json({ error: "Failed to fetch wholesalers" });
-  }
-});
-
-// Populate endpoint - loads all data from data.json
+// Populate endpoint - loads all data from data.json into MongoDB
 app.get("/populate", async (req, res) => {
   try {
     // Clear existing data (optional - comment out if you want to keep existing data)
@@ -161,6 +179,79 @@ app.get("/populate", async (req, res) => {
   } catch (err) {
     console.error("Populate error:", err);
     res.status(500).json({ error: "Failed to populate", message: err.message });
+  }
+});
+
+// Seed endpoints - for individual collection seeding
+app.get("/api/seed/medicines", async (req, res) => {
+  try {
+    await MedcineModel.insertMany(filteredData);
+    res.send("✅ Medicines inserted successfully!");
+  } catch (err) {
+    console.error("❌ Error inserting medicines:", err);
+    res.status(500).send("Error inserting data");
+  }
+});
+
+app.get("/api/seed/retailers", async (req, res) => {
+  try {
+    // Get all medicines to create the medicine ID map
+    const medicines = await MedcineModel.find();
+    const medicineIdMap = new Map();
+    medicines.forEach(med => {
+      medicineIdMap.set(med.Medicine_name, med._id);
+    });
+
+    // Prepare retailer data with linked medicines
+    const retailerDataArray = Array.from(retailerMap.values())
+      .filter(retailer => retailer.Latitude != null && retailer.Longitude != null)
+      .map(retailer => ({
+        Name: retailer.Name,
+        Latitude: retailer.Latitude,
+        Longitude: retailer.Longitude,
+        Medicines: Array.from(retailer.medicines).map(medName => ({
+          Medicine_name: medicineIdMap.get(medName),
+          Quantity: 50
+        })).filter(m => m.Medicine_name)
+      }))
+      .filter(retailer => retailer.Medicines.length > 0);
+
+    await RetailerModel.insertMany(retailerDataArray);
+    res.send("✅ Retailers inserted successfully!");
+  } catch (err) {
+    console.error("❌ Error inserting retailers:", err);
+    res.status(500).send("Error inserting data");
+  }
+});
+
+app.get("/api/seed/wholesalers", async (req, res) => {
+  try {
+    // Get all medicines to create the medicine ID map
+    const medicines = await MedcineModel.find();
+    const medicineIdMap = new Map();
+    medicines.forEach(med => {
+      medicineIdMap.set(med.Medicine_name, med._id);
+    });
+
+    // Prepare wholesaler data with linked medicines
+    const wholesalerDataArray = Array.from(wholesalerMap.values())
+      .filter(wholesaler => wholesaler.Latitude != null && wholesaler.Longitude != null)
+      .map(wholesaler => ({
+        Name: wholesaler.Name,
+        Latitude: wholesaler.Latitude,
+        Longitude: wholesaler.Longitude,
+        Medicines: Array.from(wholesaler.medicines).map(medName => ({
+          Medicine_name: medicineIdMap.get(medName),
+          Quantity: 100
+        })).filter(m => m.Medicine_name)
+      }))
+      .filter(wholesaler => wholesaler.Medicines.length > 0);
+
+    await WholesalerModel.insertMany(wholesalerDataArray);
+    res.send("✅ Wholesalers inserted successfully!");
+  } catch (err) {
+    console.error("❌ Error inserting wholesalers:", err);
+    res.status(500).send("Error inserting data");
   }
 });
 

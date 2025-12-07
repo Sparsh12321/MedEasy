@@ -13,7 +13,6 @@ import WholesalerDashboard from "./components/wholesaler-dashboard";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import PartnerLogin from "./pages/Partnerlogin";
-import CreateOrder from "./pages/create-order";
 import { ProtectedRoute } from "./pages/ProtectedRoute";
 
 function App() {
@@ -49,16 +48,6 @@ function App() {
               element={
                 <ProtectedRoute allowed={["retailer"]}>
                   <RetailerDashboard />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Create Order */}
-            <Route
-              path="/create-order"
-              element={
-                <ProtectedRoute allowed={["retailer"]}>
-                  <CreateOrder />
                 </ProtectedRoute>
               }
             />

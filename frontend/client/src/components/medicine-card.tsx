@@ -33,25 +33,31 @@ const MedicineCard: React.FC<Props> = ({ medicine }) => {
   const [modalImageError, setModalImageError] = useState(false);
 
   const storeCount = medicine.retailers.length;
+
+  // Check if image URL is valid (not a product page URL)
+  const isValidImageUrl = (url: string) => {
+    if (!url) return false;
+    // Check if it's a product page URL (not an image)
+    if (url.includes('/product/') && !url.match(/\.(jpg|jpeg|png|gif|webp)/i)) {
+      return false;
+    }
+    return true;
+  };
+
   const placeholderImage = "https://via.placeholder.com/400x300?text=Medicine+Image";
+  const displayImage = (imageError || !isValidImageUrl(medicine.image)) 
+    ? placeholderImage 
+    : medicine.image;
 
   return (
     <>
       {/* Main card */}
       <div className="border border-gray-200 rounded-lg p-3 shadow-sm flex flex-col">
         <img
-          src={imageError ? placeholderImage : medicine.image}
+          src={displayImage}
           alt={medicine.medicineName}
           className="w-full h-40 object-cover rounded-md mb-2 bg-gray-100"
-          onError={(e) => {
-            console.log("Image failed to load:", medicine.image);
-            setImageError(true);
-          }}
-          onLoad={() => {
-            if (imageError) setImageError(false);
-          }}
-          loading="lazy"
-          crossOrigin="anonymous"
+          onError={() => setImageError(true)}
         />
         <h3 className="font-semibold text-base mb-1 line-clamp-2">
           {medicine.medicineName}
@@ -91,11 +97,10 @@ const MedicineCard: React.FC<Props> = ({ medicine }) => {
 
           <div className="flex gap-4 mb-4">
             <img
-              src={modalImageError ? placeholderImage : medicine.image}
+              src={(modalImageError || !isValidImageUrl(medicine.image)) ? placeholderImage : medicine.image}
               alt={medicine.medicineName}
               className="w-24 h-24 object-cover rounded-md border bg-gray-100"
               onError={() => setModalImageError(true)}
-              loading="lazy"
             />
             <div className="text-sm text-muted-foreground flex flex-col justify-center">
               <p>
